@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog.ModernDeveloper.com</title>
+  <!-- Helps with rendering on mobile devices -->
+  <!-- see: https://developer.mozilla.org/en-US/docs/Mozilla/Mobile/Viewport_meta_tag -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <!-- http://fortawesome.github.io/Font-Awesome/ -->
+  <!-- https://github.com/FortAwesome/Font-Awesome -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+  <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,300italic%7CRoboto+Slab:400,300,700,100' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="css/normalize.css">
+  <link rel="stylesheet" type="text/css" href="../Intro-CSS-projects/project-02-buttons-web-components/css-global/colors.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
+</head>
+<body>
+  <header>
+    <span class="blog-icon bg-color-icon-blue blog-icon-bordered"><i class="fa fa-pencil" aria-hidden="true"></i></span><h1 class="md-text md-text-header">Blog<span>.Modern Developer</span></h1>
+    <span class="search-field-and-button">
+    <input type="search" name="search-for" placeholder="Search...">
+    <button><i class="fa fa-search" aria-hidden="true"></i></button>
+    </span>
+  </header>
+
+  <div class="container clear-fix">
+    <article>
+      <h2 class="article-title">Image Optimization with Cloudinary</h2>
+      <div class="article-publish-info">
+        <span class="article-published-ago">2 days</span> ago by<span class="article-author"><img src="images/nobody_m.256x256.jpg">Paul Irish</span>
+      </div>
+      <img class="article-image" src="images/blog-article-image.jpg">
+      <div class="article">
+        <div class="article-intro">
+          <p>We're always looking for ways to improve site speed; we lazy load, minify and concatenate, create sprites, experiment with caching, and just about everthing else we can think of.</p>
+          <p>The idea behind image optimization is simple but the execution hasn't always been: each of those optimizations usually requires a separate solution which makes automation difficult. Enter Cloudinary: uploading, storing, manipulating, and delivering images and videos on the web.</p>
+        </div>
+        <div class="article-section">
+          <h3 class="article-section-heading">Using Cloudinary</h3>
+          <p>
+            There are many use cases for a service like Cloudinary. When I think about my site, I see one obvious need: resized, optimized images on post list pages. Google PageSpeed crucifies my site for image size and I can't blame them: I have a regex routine that searches for the first image in a post and uses that as the post image, but the routine doesn't optimize images, so if the image is very large, I may scale it down with HTML attributes but the download size is still massive.
+          </p>
+          <p>
+            If you're looking to serve media via the &lt;picture> element for different media queries, Cloudinary has an excellent structure for doing that as well.
+          </p>
+          <p>
+            Hosting your videos with Cloudinary will allow you to have the same advantages of manipulation and performant cloud hosting as your images will have!
+          </p>
+        </div><!-- end .article-section -->
+        <div class="article-section">
+          <h3 class="article-section-heading">Try Cloudinary!</h3>
+          <p>
+            Cloudinary is an awsome one-stop shop for uploading, storing, manipulating, and delivering images and video. The APIs are all intuitive, effective, and easy to use. The optimization plugs are all useful and the included face detection, sepia/greyscale transformations, and social media image creation a huge, handy bonus.
+          </p>
+        </div><!-- end .article-section -->
+      </div><!-- end .article -->
+
+      <div class="related-articles">
+        <h3>Related Articles on Encyclopedia.Modern Developer</h3>
+        <ul>
+          <li><span>1</span>5 More Awesome New Mozilla Technologies You've Never Heard Of</li>
+          <li><span>2</span>Git Hook - npm install if package.json is Modified</li>
+          <li><span>3</span>Complete Server Stability and Security with Plesk</li>
+          <li><span>4</span>Use Mozilla Firefox DevTools in Chrome</li>
+          <li><span>5</span>Great Tools to Use in Your Projects</li>
+        </ul>
+      </div><!-- end .related-articles -->
+
+      <div class="article-footer">
+        <ul class="keywords">
+          <li>Optimization</li>
+          <li>Cloudinary</li>
+          <li>JPEG</li>
+          <li>Tutorial</li>
+        </ul>
+        <ul class="social-networks">
+          <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
+          <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
+          <li><i class="fa fa-github" aria-hidden="true"></i></li>
+          <li><i class="fa fa-google-plus" aria-hidden="true"></i></li>
+        </ul>
+      </div><!-- end .article-footer -->
+
+      <div class="article-comments">
+        <h3>Post Comment</h3>
+        <textarea placeholder="Your Comment" name="comment"></textarea>
+        <br><button class="post">Post</button>
+        <ul class="comment" style="">
+          <li>some comment</li>
+          <li>
+            <ul class="reply">
+              <li>some reply</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+
+    </article>
+
+    <section class="articles-menu">
+      <div class="articles">
+        <ul class="article-choices clear-fix">
+          <li>Recent Articles</li>
+          <li>Upcoming Posts</li>
+        </ul>
+        <div class="articles-list">
+          <ul>
+            <li><h4>Getting Your Selected Articles Published on Encyclopedia</h4><span>a day ago</span></li>
+            <li><h4>Welcome to Encyclopedia Modern Developer</h4><span>2 days ago</span></li>
+            <li><h4>All Trappings</h4><span>12 days ago</span></li>
+            <li><h4>Getting Your Selected Articles Published on Encyclopedia</h4><span>33 day2 ago</span></li>
+            <li><h4>Welcome to Encyclopedia Modern Developer</h4><span>54 days ago</span></li>
+            <li><h4>All Trappings</h4><span>64 days ago</span></li>
+          </ul>
+          <button class="load-more">Load More</button>
+        </div><!-- end .articles-list -->
+
+      </div><!-- end .articles -->
+
+      <div class="subscribe clear-fix">
+        <input type="email" name="email" placeholder="Your Email">
+        <button class="subscribe">Subscribe</button>
+      </div>
+
+    </section>
+
+  <footer>
+    <span class="blog-icon bg-color-icon-purple"><i class="fa fa-pencil" aria-hidden="true"></i></span><span class="md-text md-text-footer">Blog<span>.Modern Developer</span></span>
+    <span class="copyright">&copy; <script>document.write(new Date().getFullYear());</script> Modern Developer Inc.
+    <br>&nbsp;&nbsp;&nbsp;
+    <a href="mailto:blog@moderndeveloper.com" target="_blank">blog@moderndeveloper.com</a></span>
+  </footer>
+</body>
+</html>

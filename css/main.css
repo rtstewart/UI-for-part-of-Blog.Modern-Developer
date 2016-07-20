@@ -1,0 +1,435 @@
+/* main.css */
+
+/* pink for buttons and text/headers/anchors: #f263cf; */
+/* purple used for text/headers/numbered bullets: #926ae6; */
+* {
+  box-sizing: border-box;
+}
+.clear-fix::after {
+  content: "";
+  display: block;
+  height: 0;
+  clear: both;
+}
+html {
+  font-size: 16px;
+}
+body {
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  /*min-height: 1400px;*/
+  font-family: "Roboto", sans-serif;
+  background-color: #353334;
+  padding: 8rem 9rem 12.5rem 9rem;
+  padding: 8rem 10% 12.5rem 10%;
+}
+header {
+  background-color: #302e2f;
+  position: fixed;
+  z-index: 10;
+  padding: 1rem 5.5rem;
+  padding: 1rem 6.25%;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.blog-icon {
+  margin: 0;
+  padding: 0;
+  box-sizing: content-box;
+  display: inline-block;
+  text-align: center;
+  font-size: 1.25rem;
+  width: 1.75rem;
+  height: 1.75rem;
+  line-height: 1.75rem;
+  border-radius: 1.75rem;
+  color: white;
+}
+.blog-icon-bordered {
+  border: 2px solid #a1a0b5;
+}
+.bg-color-learn {
+  background-color: rgb(75, 194, 212);
+}
+.bg-color-know {
+  background-color: rgb(204, 140, 246);
+}
+.bg-color-icon-blue {
+  background-color: #4a96de;
+}
+.bg-color-icon-purple {
+  background-color: #7b7cec;
+}
+.md-text {
+  font-size: 1rem;
+  display: inline;
+  margin-left: 0.75rem;
+  font-family: "Roboto Slab";
+  font-weight: 700;
+}
+.md-text-header {
+  color: #fff;
+}
+.md-text-header span {
+  color: #a0a0a0;
+  color: #a6a6a6;
+  font-weight: 400;
+}
+span.search-field-and-button {
+  float: right;
+  margin-top: 0.25rem;
+}
+.search-field-and-button input, .search-field-and-button button {
+  color: #e8e8e8;
+  height: 2rem;
+  border: none;
+  border-radius: 2px;
+}
+.search-field-and-button input {
+  background-color: #4d4d4d;
+  padding: 0 0.5em;
+  width: 14em;
+}
+.search-field-and-button button {
+  background-color: #717171;
+  margin: -6px;
+  text-align: center;
+  width: 2em;
+}
+.container {
+  /*border: 1px solid red;*/
+}
+article {
+  position: relative;
+  min-height: 200px;
+  /*border: 1px solid white;*/
+  width: 71%;
+  float: left;
+background-color: white;  
+}
+.article-title {
+  margin: 3rem 2.5rem 1.5rem 2.5rem;
+  /*padding: 1.5rem 2.5rem;*/
+  font-weight: 300;
+  font-size: 2.25rem;
+}
+.article {
+
+}
+.article-publish-info, .article, .article-footer {
+  margin: 1.5rem 2.5rem;
+  /*padding: 1em 2.5em;*/
+}
+.article-publish-info {
+  font-size: 0.8rem;
+  color: #6f6f6f;
+}
+.article-publish-info img {
+  margin: 0 0.25rem;
+  border: 1px solid black;
+  border-radius: 2px;
+  height: 1.25rem;
+  position: relative;
+  top: 0.25rem;
+}
+.article-image {
+  /*border: 1px solid orange;*/
+   width: 100%;
+   height: auto;
+}
+span.article-author {
+  color: #dc4ab1;
+}
+.article-section-heading {
+  font-size: 1.5rem;
+  font-weight: 300;
+  color: #9e4ce2;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+.related-articles {
+  margin: 1.5rem 0;
+  padding: 1rem 2.5rem;
+}
+article p {
+  line-height: 1.75rem;
+}
+.related-articles {
+  background-color: #e9e7e8;
+  width: 100%;
+}
+.related-articles h3 {
+  font-size: 1.5em;
+  font-weight: 300;
+  color: #dc4ab1;
+}
+.related-articles ul {
+  list-style-type: none;
+  padding-left: 1em;
+  /*border: 1px solid orange;*/
+}
+.related-articles ul li {
+  position: relative;
+  /*border: 1px solid yellow;*/
+}
+.related-articles ul li {
+  border-left: 1px solid #b6b6b6;
+  height: 2.25rem;
+  line-height: 2.25rem;
+}
+.related-articles ul li span {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  line-height: 1.25rem;
+  border-radius: 0.625rem;
+  font-size: 0.75rem;
+  color: #b6b6b6;
+  border: 1px solid #b6b6b6;
+  text-align: center;
+  position: relative;
+  left: -0.625rem;
+  margin-right: 0.75rem;
+  background-color: white;
+}
+/* the next four rules just demonstrate how to target specific
+  li to make them unique - do with JS going forward */
+.related-articles ul li:nth-child(2) {
+  color: #926ae6;
+}
+.related-articles ul li:nth-child(2) span {
+  color: #926ae6;
+  border: 1px solid #926ae6;
+  width: 1.6rem;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  border-radius: 0.8rem;
+  left: -0.8rem;
+  /* not sure why below adjustment seems necessary
+    to keep span centered vertically in li */
+  top: -0.125rem;
+}
+.related-articles ul li:nth-child(4) {
+  color: #926ae6;  
+}
+.related-articles ul li:nth-child(4) span {
+  background-color: #926ae6;
+  color: #fff;
+}
+ul.keywords, ul.social-networks {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+  /*border: 1px solid red;*/
+}
+ul.social-networks {
+  float: right;
+  position: relative;
+  top: -0.25rem;
+}
+ul.keywords li, ul.social-networks li {
+  display: inline-block;
+}
+ul.keywords li {
+  font-size: 0.75rem;
+  height: 1.25rem;
+  line-height: 1.25rem;
+  border-radius: 0.675rem;
+  padding: 0 0.5rem;
+  /* the next four selectors and rules corresopond to
+    the icons in a selectable state */
+  color: #b6b6b6;
+  border: 1px solid #b6b6b6;
+  margin-right: 0.1rem;
+}
+ul.keywords li:nth-child(3) {
+  color: #f263cf;
+  border: 1px solid #f263cf;
+}
+ul.social-networks li {
+  /* Twitter blue: #6cadde; */
+  /* Google-Plus background red: #507bbc; */
+  /* Facebook blue: #3b5999; */
+  /* Github: black; */
+  box-sizing: content-box;
+  /* the following color and border color correspond to
+      the disabled state */
+  color: #b6b6b6;
+  border: 2px solid #b6b6b6;
+  width: 1.5rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  text-align: center;
+  border-radius: 1.5rem;
+  margin-left: 0.25rem;
+}
+/* the next four selectors and rules corresopond to
+    the icons in a selectable state */
+ul.social-networks li:first-child {
+  color: #6cadde;
+  border: 2px solid #6cadde;
+}
+ul.social-networks li:nth-child(2) {
+  color: #3b5999;
+  border: 2px solid #3b5999;
+}
+ul.social-networks li:nth-child(3) {
+  color: #000;
+  border: 2px solid #000;
+}
+ul.social-networks li:last-child {
+  color: #c53929;
+  border: 2px solid #c53929;;
+}
+.article-comments {
+  text-align: center;
+  background-color: #353334;
+  color: #838383;
+  margin: 0;
+  padding: 0rem 2.5rem 1.5rem 2.5rem;
+  /* ?? find out why the LACK of border will
+    then ignore top margin on h3 below ?? */
+  border: 1px solid #353334;
+}
+.article-comments h3 {
+  margin: 1.5rem 0;
+  font-weight: 400;
+}
+.article-comments textarea {
+  background-color: #6a6869;
+  color: #e8e8e8;
+  width: 100%;
+  height: 6rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 2px;
+}
+button.post, button.subscribe {
+  text-align: center;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #f263cf;
+  height: 2rem;
+}
+button.post {
+  width: 8rem;
+  margin-top: 1rem;
+}
+button.subscribe {
+  width: 5rem;
+  width: 30%;
+  min-width: 4.5rem;
+}
+.articles-menu {
+  position: relative;
+  /*background-color: yellow;*/
+  width: 27%;
+  float: right;
+}
+/*.articles {
+  background-color: #272526;
+  border-radius: 2px;
+}*/
+.articles-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+.articles-menu ul.article-choices > li {
+  text-align: center;
+  padding: 0.75rem 0;  
+  font-size: 0.9rem;
+  color: #4a96de;
+  width: 50%;
+  float: left;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+}
+/* default/initial active tab */
+.articles-menu ul.article-choices li:first-child {
+  background-color: #272526;
+}
+/* default/initial inactive tab */
+.articles-menu ul.article-choices li:last-child {
+  background-color: #353334;
+}
+.articles-list {
+  background-color: #272526;
+  border-bottom-left-radius: 2px;
+  border-bottom-right-radius: 2px;
+  padding: 0 1rem;
+  /* ?? find out why omitting the line below creates
+    a gap between .articles-list and .article-choices */
+  border: 1px solid #272526;
+}
+.articles-list ul li:not(:last-child) {
+  border-bottom: 1px solid #4a96de;
+  padding-bottom: 1rem;
+}
+.articles-list h4 {
+  font-size: 0.9rem;
+  color: #4f6985;
+  margin-bottom: 0.25rem;
+}
+.articles-list span {
+  font-size: 0.8rem;
+  color: #6f6f6f;
+}
+div.subscribe {
+  background-color: #353334;
+  padding-top: 1.75rem;
+}
+input[type="email"] {
+  border: none;
+  border-radius: 2px;
+  background-color: #6a6869;
+  color: #e8e8e8;
+  height: 2rem;
+  line-height: 2rem;
+  padding: 0 0.75rem;
+  font-size: 0.8rem;
+  width: 66%;
+}
+button.subscribe {
+  float: right;
+}
+button.load-more {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #4a96de;
+  background-color: #272526;
+  color: #4a96de;
+  font-size: 0.8rem;
+  height: 2.5rem;
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
+footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3.5rem 6.25rem;
+  padding: 3.5rem 9%;
+  background-color: #242424;
+}
+.md-text-footer {
+  color: #a6a6a6;
+}
+.md-text-footer span {
+  color: #6f6f6f;
+  font-weight: 400;
+}
+footer span.copyright {
+  float: right;
+  font-size: 0.75rem;
+  color: #6f6f6f;
+}
+footer a {
+  color: #a6a6a6;
+  text-decoration: none;
+}
