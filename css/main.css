@@ -180,18 +180,18 @@ article p {
 }
 .related-articles ul li span {
   display: inline-block;
-  width: 1.25rem;
-  height: 1.25rem;
-  line-height: 1.25rem;
-  border-radius: 0.625rem;
-  font-size: 0.75rem;
-  color: #b6b6b6;
-  border: 1px solid #b6b6b6;
-  text-align: center;
   position: relative;
   left: -0.625rem;
+  font-size: 0.75rem;
+  text-align: center;
+  width: 1.25rem;
+  height: 1.25rem;
   margin-right: 0.75rem;
+  line-height: 1.25rem;
+  border-radius: 0.625rem;
+  color: #b6b6b6;
   background-color: white;
+  border: 1px solid #b6b6b6;
 }
 /* the next four rules just demonstrate how to target specific
   li to make them unique - do with JS going forward */
@@ -199,16 +199,18 @@ article p {
   color: #926ae6;
 }
 .related-articles ul li:nth-child(2) span {
-  color: #926ae6;
-  border: 1px solid #926ae6;
+  /* width and height change by +0.35rem */
   width: 1.6rem;
   height: 1.6rem;
+  margin-right: 0.4rem; /* ?? expected 0.75 - 1/2(0.35) */
   line-height: 1.6rem;
   border-radius: 0.8rem;
-  left: -0.8rem;
-  /* not sure why below adjustment seems necessary
+  left: -0.8rem; /* -0.625 + (-0.175) */
+  /* ?? not sure why below adjustment seems necessary
     to keep span centered vertically in li */
   top: -0.125rem;
+  color: #926ae6;
+  border: 1px solid #926ae6;
 }
 .related-articles ul li:nth-child(4) {
   color: #926ae6;  
