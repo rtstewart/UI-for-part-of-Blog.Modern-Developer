@@ -103,10 +103,10 @@ span.search-field-and-button {
 article {
   position: relative;
   min-height: 200px;
-  /*border: 1px solid white;*/
   width: 71%;
   float: left;
-background-color: white;  
+  background-color: white;
+  border: 1px solid yellow;
 }
 .article-title {
   margin: 3rem 2.5rem 1.5rem 2.5rem;
@@ -115,7 +115,7 @@ background-color: white;
   font-size: 2.25rem;
 }
 .article {
-
+  /*border: 1px solid orange;*/
 }
 .article-publish-info, .article, .article-footer {
   margin: 1.5rem 2.5rem;
@@ -152,7 +152,7 @@ span.article-author {
   margin: 1.5rem 0;
   padding: 1rem 2.5rem;
 }
-article p {
+.article-intro p, .article-section p {
   line-height: 1.75rem;
 }
 .related-articles {
@@ -213,7 +213,7 @@ article p {
   border: 1px solid #926ae6;
 }
 .related-articles ul li:nth-child(4) {
-  color: #926ae6;  
+  color: #926ae6;
 }
 .related-articles ul li:nth-child(4) span {
   background-color: #926ae6;
@@ -286,7 +286,7 @@ ul.social-networks li:last-child {
   border: 2px solid #c53929;;
 }
 .article-comments {
-  text-align: center;
+  /*text-align: center;*/
   background-color: #353334;
   color: #838383;
   margin: 0;
@@ -296,6 +296,7 @@ ul.social-networks li:last-child {
   border: 1px solid #353334;
 }
 .article-comments h3 {
+  text-align: center;
   margin: 1.5rem 0;
   font-weight: 400;
 }
@@ -319,13 +320,67 @@ button.post, button.subscribe {
 }
 button.post {
   width: 8rem;
-  margin-top: 1rem;
+  margin: 1rem 50%;
+  transform: translateX(-50%);
 }
-button.subscribe {
-  width: 5rem;
-  width: 30%;
-  min-width: 4.5rem;
+.comment-box {
+  border: 1px solid white;
 }
+.comment, .reply {
+  font-size: 0.9rem;
+  border: 1px solid red;
+  /*margin: 0;*/
+  /*padding: 0rem 0rem 0rem 3.5rem;*/
+  list-style-type: none;
+}
+.comment li, .reply li {
+  position: relative;
+  padding: 0;
+}
+.comment li p, .comment li span, .comment li button,
+ .reply li p, .reply li span, .reply li button {
+  margin: 0 0 1rem 2rem;
+  line-height: 1.4rem;
+  border: none;
+}
+.reply {
+  /* margin-left = :before "image box" width plus <p> left padding */
+  margin-left: 4.5rem;
+}
+/*.comment li:first-child {
+  list-style-image: url('../images/nobody_f.50x50.jpg')
+}*/
+/*.comment li:before{
+   content: '';
+   display: inline-block;
+   height: 40px;
+   width: 40px;
+   background-image: url('../images/nobody_f.256x256.jpg');
+}*/
+.comment li:first-child:before,
+.reply li:first-child:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    top: 0;
+    left: -40px;
+    height: 40px;
+    width: 40px;
+    left: -2.5rem;
+    height: 2.5rem;
+    width: 2.5rem;
+    /*background-image: url('../images/nobody_f.256x256.jpg');*/
+    background-size: contain;
+    background-repeat: no-repeat;
+    /*margin-left: -10px;*/
+}
+.comment li:first-child:before {
+  background-image: url('../images/nobody_f.256x256.jpg');
+}
+.reply li:first-child:before {
+  background-image: url('../images/nobody_m.256x256.jpg');
+}
+/* rhs of desktop page */
 .articles-menu {
   position: relative;
   /*background-color: yellow;*/
@@ -381,6 +436,17 @@ button.subscribe {
   font-size: 0.8rem;
   color: #6f6f6f;
 }
+button.load-more {
+  width: 100%;
+  border: none;
+  border-top: 1px solid #4a96de;
+  background-color: #272526;
+  color: #4a96de;
+  font-size: 0.8rem;
+  height: 2.5rem;
+  text-transform: uppercase;
+  margin-top: 2rem;
+}
 div.subscribe {
   background-color: #353334;
   padding-top: 1.75rem;
@@ -397,18 +463,10 @@ input[type="email"] {
   width: 66%;
 }
 button.subscribe {
+  width: 5rem;
+  width: 30%;
+  min-width: 4.5rem;
   float: right;
-}
-button.load-more {
-  width: 100%;
-  border: none;
-  border-top: 1px solid #4a96de;
-  background-color: #272526;
-  color: #4a96de;
-  font-size: 0.8rem;
-  height: 2.5rem;
-  text-transform: uppercase;
-  margin-top: 2rem;
 }
 footer {
   position: absolute;
