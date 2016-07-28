@@ -1,6 +1,6 @@
 /* main.css */
 
-/* pink for buttons and text/headers/anchors: #f263cf; */
+/* pink for buttons and text/headers/anchors: #dc4ab1; */
 /* purple used for text/headers/numbered bullets: #926ae6; */
 * {
   box-sizing: border-box;
@@ -154,6 +154,10 @@ span.article-author {
 }
 .article-intro p, .article-section p {
   line-height: 1.75rem;
+}
+.article-intro a, .article-section a {
+  text-decoration: none;
+  color: #dc4ab1;
 }
 .related-articles {
   background-color: #e9e7e8;
