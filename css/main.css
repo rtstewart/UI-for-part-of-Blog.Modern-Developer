@@ -399,14 +399,14 @@ button.post {
   border-radius: 2px;
 }*/
 .articles-menu ul {
-  border: 1px solid white;
+  /*border: 1px solid white;*/
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 /* tabs for "Recent Articles" and "Upcoming Posts" */
 .articles-menu ul.article-choices li {
-  border: 1px solid yellow;
+  /*border: 1px solid yellow;*/
   text-align: center;
   padding: 0.75rem 0;  
   font-size: 0.9rem;
