@@ -77,7 +77,6 @@ header {
 }
 span.search-field-and-button {
   float: right;
-  margin-top: 0.25rem;
 }
 .search-field-and-button input, .search-field-and-button button {
   color: #e8e8e8;
@@ -95,6 +94,9 @@ span.search-field-and-button {
   margin: -6px;
   text-align: center;
   width: 2em;
+}
+button:hover {
+  cursor: pointer;
 }
 .container {
   /*border: 1px solid red;*/
@@ -384,9 +386,7 @@ button.post {
   background-color: #353334;
   color: #f263cf;
 }
-.comment button:hover, .reply button:hover {
-  cursor: pointer;
-}
+
 /* rhs of desktop page */
 .articles-menu {
   position: relative;
@@ -399,11 +399,14 @@ button.post {
   border-radius: 2px;
 }*/
 .articles-menu ul {
+  border: 1px solid white;
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
-.articles-menu ul.article-choices > li {
+/* tabs for "Recent Articles" and "Upcoming Posts" */
+.articles-menu ul.article-choices li {
+  border: 1px solid yellow;
   text-align: center;
   padding: 0.75rem 0;  
   font-size: 0.9rem;
@@ -412,6 +415,9 @@ button.post {
   float: left;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
+}
+.articles-menu ul.article-choices li:hover {
+  cursor: pointer;
 }
 /* default/initial active tab */
 .articles-menu ul.article-choices li:first-child {
