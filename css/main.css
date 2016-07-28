@@ -17,11 +17,10 @@ html {
 body {
   -webkit-font-smoothing: antialiased;
   position: relative;
-  /*min-height: 1400px;*/
   font-family: "Roboto", sans-serif;
   background-color: #353334;
   padding: 8rem 9rem 12.5rem 9rem;
-  padding: 8rem 10% 12.5rem 10%;
+  padding: 8rem 10% 9rem 10%;
 }
 header {
   background-color: #302e2f;
@@ -101,16 +100,15 @@ span.search-field-and-button {
   /*border: 1px solid red;*/
 }
 article {
+  /*border: 1px solid yellow;*/
   position: relative;
   min-height: 200px;
   width: 71%;
   float: left;
   background-color: white;
-  border: 1px solid yellow;
 }
 .article-title {
   margin: 3rem 2.5rem 1.5rem 2.5rem;
-  /*padding: 1.5rem 2.5rem;*/
   font-weight: 300;
   font-size: 2.25rem;
 }
@@ -118,8 +116,8 @@ article {
   /*border: 1px solid orange;*/
 }
 .article-publish-info, .article, .article-footer {
+  /*border: 1px solid red;*/
   margin: 1.5rem 2.5rem;
-  /*padding: 1em 2.5em;*/
 }
 .article-publish-info {
   font-size: 0.8rem;
@@ -135,8 +133,8 @@ article {
 }
 .article-image {
   /*border: 1px solid orange;*/
-   width: 100%;
-   height: auto;
+  width: 100%;
+  height: auto;
 }
 span.article-author {
   color: #dc4ab1;
@@ -165,13 +163,13 @@ span.article-author {
   color: #dc4ab1;
 }
 .related-articles ul {
+  /*border: 1px solid orange;*/
   list-style-type: none;
   padding-left: 1em;
-  /*border: 1px solid orange;*/
 }
 .related-articles ul li {
-  position: relative;
   /*border: 1px solid yellow;*/
+  position: relative;
 }
 .related-articles ul li {
   border-left: 1px solid #b6b6b6;
@@ -220,11 +218,11 @@ span.article-author {
   color: #fff;
 }
 ul.keywords, ul.social-networks {
+  /*border: 1px solid red;*/
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: inline-block;
-  /*border: 1px solid red;*/
 }
 ul.social-networks {
   float: right;
@@ -286,7 +284,6 @@ ul.social-networks li:last-child {
   border: 2px solid #c53929;;
 }
 .article-comments {
-  /*text-align: center;*/
   background-color: #353334;
   color: #838383;
   margin: 0;
@@ -320,43 +317,46 @@ button.post, button.subscribe {
 }
 button.post {
   width: 8rem;
-  margin: 1rem 50%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  margin-left: 50%;
   transform: translateX(-50%);
 }
 .comment-box {
-  border: 1px solid white;
+  /*border: 1px solid white;*/
 }
+/* unordered lists for posts/comments and associated replies */
 .comment, .reply {
-  font-size: 0.9rem;
-  border: 1px solid red;
-  /*margin: 0;*/
-  /*padding: 0rem 0rem 0rem 3.5rem;*/
+  /*border: 1px solid red;*/
+  font-size: 0.8rem;
   list-style-type: none;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 .comment li, .reply li {
   position: relative;
   padding: 0;
+  color: #b5b5b5;
 }
 .comment li p, .comment li span, .comment li button,
  .reply li p, .reply li span, .reply li button {
-  margin: 0 0 1rem 2rem;
+  margin: 0 0 0.25rem 1rem;
   line-height: 1.4rem;
   border: none;
 }
-.reply {
-  /* margin-left = :before "image box" width plus <p> left padding */
-  margin-left: 4.5rem;
+.comment li span:first-child,
+.reply li span:first-child {
+  color: #fff;
+  font-weight: bold;
 }
-/*.comment li:first-child {
-  list-style-image: url('../images/nobody_f.50x50.jpg')
-}*/
-/*.comment li:before{
-   content: '';
-   display: inline-block;
-   height: 40px;
-   width: 40px;
-   background-image: url('../images/nobody_f.256x256.jpg');
-}*/
+.comment li span:nth-child(2),
+.reply li span:nth-child(2) {
+  color: #6f6f6f;
+}
+.reply {
+  /* margin-left = :before "image box" width plus <p> left margin */
+  margin-left: 3.5rem;
+}
 .comment li:first-child:before,
 .reply li:first-child:before {
     content: '';
@@ -369,16 +369,23 @@ button.post {
     left: -2.5rem;
     height: 2.5rem;
     width: 2.5rem;
-    /*background-image: url('../images/nobody_f.256x256.jpg');*/
+    border-radius: 2px;
     background-size: contain;
     background-repeat: no-repeat;
-    /*margin-left: -10px;*/
 }
 .comment li:first-child:before {
   background-image: url('../images/nobody_f.256x256.jpg');
 }
 .reply li:first-child:before {
   background-image: url('../images/nobody_m.256x256.jpg');
+}
+.comment button, .reply button {
+  padding: 0;
+  background-color: #353334;
+  color: #f263cf;
+}
+.comment button:hover, .reply button:hover {
+  cursor: pointer;
 }
 /* rhs of desktop page */
 .articles-menu {
