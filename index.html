@@ -25,62 +25,65 @@
 
   <div class="container clear-fix">
     <article>
-      <h2 class="article-title">Image Optimization with Cloudinary</h2>
-      <div class="article-publish-info">
-        <span class="article-published-ago">2 days</span> ago by<span class="article-author"><img src="images/nobody_m.256x256.jpg">Paul Irish</span>
-      </div>
-      <img class="article-image" src="images/blog-article-image.jpg">
       <div class="article">
-        <div class="article-intro">
-          <p>We're always looking for ways to improve site speed; we lazy load, minify and concatenate, create sprites, experiment with caching, and just about everthing else we can think of.</p>
-          <p>The idea behind image optimization is simple but the execution hasn't always been: each of those optimizations usually requires a separate solution which makes automation difficult. Enter Cloudinary: uploading, storing, manipulating, and delivering images and videos on the web.</p>
+        <h2 class="article-title">Image Optimization with Cloudinary</h2>
+        <div class="article-publish-info">
+          <span class="article-published-ago">2 days</span> ago by<span class="article-author"><img src="images/nobody_m.256x256.jpg">Paul Irish</span>
         </div>
-        <div class="article-section">
-          <h3 class="article-section-heading">Using Cloudinary</h3>
-          <p>
-            There are many use cases for a service like Cloudinary. When I think about my site, I see one obvious need: resized, optimized images on post list pages. <a href="#" target="_blank">Google PageSpeed</a> crucifies my site for image size and I can't blame them: I have a regex routine that searches for the first image in a post and uses that as the post image, but the routine doesn't optimize images, so if the image is very large, I may scale it down with HTML attributes but the download size is still massive.
-          </p>
-          <p>something here</p>
-          <p>
-            If you're looking to serve media via the &lt;picture> element for different media queries, <a href="#" target="_blank">Cloudinary has an excellent structure</a> for doing that as well.
-          </p>
-          <p>
-            Hosting your videos with Cloudinary will allow you to have the same advantages of manipulation and performant cloud hosting as your images will have!
-          </p>
-        </div><!-- end .article-section -->
-        <div class="article-section">
-          <h3 class="article-section-heading">Try Cloudinary!</h3>
-          <p>
-            <a href="#" target="_blank">Cloudinary</a> is an awesome one-stop shop for uploading, storing, manipulating, and delivering images and video. The APIs are all intuitive, effective, and easy to use. The optimization plugs are all useful and the included face detection, sepia/greyscale transformations, and social media image creation a huge, handy bonus.
-          </p>
-        </div><!-- end .article-section -->
+        <img class="article-image" src="images/blog-article-image.jpg">
+        <div class="article-content"><!-- new -->
+          <div class="article-intro">
+            <p>We're always looking for ways to improve site speed; we lazy load, minify and concatenate, create sprites, experiment with caching, and just about everthing else we can think of.</p>
+            <p>The idea behind image optimization is simple but the execution hasn't always been: each of those optimizations usually requires a separate solution which makes automation difficult. Enter Cloudinary: uploading, storing, manipulating, and delivering images and videos on the web.</p>
+          </div>
+          <div class="article-section">
+            <h3 class="article-section-heading">Using Cloudinary</h3>
+            <p>
+              There are many use cases for a service like Cloudinary. When I think about my site, I see one obvious need: resized, optimized images on post list pages. <a href="#" target="_blank">Google PageSpeed</a> crucifies my site for image size and I can't blame them: I have a regex routine that searches for the first image in a post and uses that as the post image, but the routine doesn't optimize images, so if the image is very large, I may scale it down with HTML attributes but the download size is still massive.
+            </p>
+            <p>something here</p><!-- ?? -->
+            <p>
+              If you're looking to serve media via the &lt;picture> element for different media queries, <a href="#" target="_blank">Cloudinary has an excellent structure</a> for doing that as well.
+            </p>
+            <p>
+              Hosting your videos with Cloudinary will allow you to have the same advantages of manipulation and performant cloud hosting as your images will have!
+            </p>
+          </div><!-- end .article-section -->
+          <div class="article-section">
+            <h3 class="article-section-heading">Try Cloudinary!</h3>
+            <p>
+              <a href="#" target="_blank">Cloudinary</a> is an awesome one-stop shop for uploading, storing, manipulating, and delivering images and video. The APIs are all intuitive, effective, and easy to use. The optimization plugs are all useful and the included face detection, sepia/greyscale transformations, and social media image creation a huge, handy bonus.
+            </p>
+          </div><!-- end .article-section -->
+        </div><!-- end .article-content -->
+
+        <div class="related-articles">
+          <h3>Related Articles on Encyclopedia.Modern Developer</h3>
+          <ul>
+            <li><span>1</span>5 More Awesome New Mozilla Technologies You've Never Heard Of</li>
+            <li><span>2</span>Git Hook - npm install if package.json is Modified</li>
+            <li><span>3</span>Complete Server Stability and Security with Plesk</li>
+            <li><span>4</span>Use Mozilla Firefox DevTools in Chrome</li>
+            <li><span>5</span>Great Tools to Use in Your Projects</li>
+          </ul>
+        </div><!-- end .related-articles -->
+
+        <div class="article-footer">
+          <ul class="keywords">
+            <li>Optimization</li>
+            <li>Cloudinary</li>
+            <li>JPEG</li>
+            <li>Tutorial</li>
+          </ul>
+          <ul class="social-networks">
+            <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
+            <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
+            <li><i class="fa fa-github" aria-hidden="true"></i></li>
+            <li><i class="fa fa-google-plus" aria-hidden="true"></i></li>
+          </ul>
+        </div><!-- end .article-footer -->
+
       </div><!-- end .article -->
-
-      <div class="related-articles">
-        <h3>Related Articles on Encyclopedia.Modern Developer</h3>
-        <ul>
-          <li><span>1</span>5 More Awesome New Mozilla Technologies You've Never Heard Of</li>
-          <li><span>2</span>Git Hook - npm install if package.json is Modified</li>
-          <li><span>3</span>Complete Server Stability and Security with Plesk</li>
-          <li><span>4</span>Use Mozilla Firefox DevTools in Chrome</li>
-          <li><span>5</span>Great Tools to Use in Your Projects</li>
-        </ul>
-      </div><!-- end .related-articles -->
-
-      <div class="article-footer">
-        <ul class="keywords">
-          <li>Optimization</li>
-          <li>Cloudinary</li>
-          <li>JPEG</li>
-          <li>Tutorial</li>
-        </ul>
-        <ul class="social-networks">
-          <li><i class="fa fa-twitter" aria-hidden="true"></i></li>
-          <li><i class="fa fa-facebook" aria-hidden="true"></i></li>
-          <li><i class="fa fa-github" aria-hidden="true"></i></li>
-          <li><i class="fa fa-google-plus" aria-hidden="true"></i></li>
-        </ul>
-      </div><!-- end .article-footer -->
 
       <div class="article-comments">
         <h3>Post Comment</h3>

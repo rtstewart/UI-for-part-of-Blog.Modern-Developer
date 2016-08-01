@@ -104,22 +104,28 @@ button:hover {
 article {
   /*border: 1px solid yellow;*/
   position: relative;
-  min-height: 200px;
   width: 71%;
   float: left;
+  /*background-color: white;*/
+}
+.article {
+  /*border: 1px solid red;*/
+  padding: 2.5rem 0 0 0;
   background-color: white;
+  border-radius: 2px;
 }
 .article-title {
-  margin: 3rem 2.5rem 1.5rem 2.5rem;
+  margin: 0rem 2.5rem 0.5rem 2.5rem;
   font-weight: 300;
   font-size: 2.25rem;
 }
-.article {
+.article-content {
   /*border: 1px solid orange;*/
+  margin: 0 2.5rem;
 }
-.article-publish-info, .article, .article-footer {
+.article-publish-info {
   /*border: 1px solid red;*/
-  margin: 1.5rem 2.5rem;
+  margin: 0.5rem 2.5rem 1.5rem 2.5rem;
 }
 .article-publish-info {
   font-size: 0.8rem;
@@ -160,8 +166,10 @@ span.article-author {
   color: #dc4ab1;
 }
 .related-articles {
+  /*border: 1px solid orange;*/
   background-color: #e9e7e8;
   width: 100%;
+  margin: 0;
 }
 .related-articles h3 {
   font-size: 1.5em;
@@ -223,8 +231,14 @@ span.article-author {
   background-color: #926ae6;
   color: #fff;
 }
-ul.keywords, ul.social-networks {
+.article-footer {
   /*border: 1px solid red;*/
+  width: 100%;
+  margin: 0;
+  padding: 1.25rem 2.5rem;
+}
+ul.keywords, ul.social-networks {
+  /*border: 1px solid #00ff00;*/
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -290,7 +304,9 @@ ul.social-networks li:last-child {
   border: 2px solid #c53929;;
 }
 .article-comments {
-  background-color: #353334;
+  border: 1px solid #fff; /* ?? */
+  /*background-color: #353334;*/
+  /*background-color: #00ff00;*/
   color: #838383;
   margin: 0;
   padding: 0rem 2.5rem 1.5rem 2.5rem;
@@ -300,7 +316,7 @@ ul.social-networks li:last-child {
 }
 .article-comments h3 {
   text-align: center;
-  margin: 1.5rem 0;
+  margin: 1.5rem 0 1.5rem 0;
   font-weight: 400;
 }
 .article-comments textarea {
@@ -375,7 +391,7 @@ button.post {
     left: -2.5rem;
     height: 2.5rem;
     width: 2.5rem;
-    border-radius: 2px;
+    /*border-radius: 2px;*/
     background-size: contain;
     background-repeat: no-repeat;
 }
@@ -412,7 +428,7 @@ button.post {
 .articles-menu ul.article-choices li {
   /*border: 1px solid yellow;*/
   text-align: center;
-  padding: 0.75rem 0;  
+  padding: 0.75rem 0;
   font-size: 0.9rem;
   color: #4a96de;
   width: 50%;
