@@ -457,7 +457,7 @@ button.post {
   border: 1px solid #272526;
 }
 .articles-list ul li:not(:last-child) {
-  border-bottom: 1px solid #4a96de;
+  border-bottom: 1px solid #6f6f6f;
   padding-bottom: 1rem;
 }
 .articles-list h4 {
@@ -472,7 +472,7 @@ button.post {
 button.load-more {
   width: 100%;
   border: none;
-  border-top: 1px solid #4a96de;
+  border-top: 1px solid #6f6f6f;
   background-color: #272526;
   color: #4a96de;
   font-size: 0.8rem;
