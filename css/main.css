@@ -154,6 +154,57 @@ span.article-author {
   margin-top: 2rem;
   margin-bottom: 1rem;
 }
+/*  code sample */
+
+.code-sample {
+  /*border: 1px solid red;*/
+  margin: 2rem 0;
+  font-size: 0.8rem;
+}
+.code-sample .tab {
+  /*border: 1px solid orange;*/
+  display: inline-block;
+  text-transform: uppercase;
+  color: #aaa;
+  padding: 0.5rem;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+.code-sample .tab:hover {
+  cursor: pointer;
+}
+.code-sample .code,
+.code-sample .result {
+  border-radius: 4px;
+  line-height: 1.8; /* prism overrides */
+  padding: 0.5rem 0.5rem;
+}
+.code-sample .code {
+border-top-left-radius: 0;
+}
+.code-sample pre,
+.code-sample code {
+  font-family: "Roboto", sans-serif;
+}
+.code-sample .foreground {
+  background-color: #eee;
+  background-color: #f5f2f0; /* prism.css */
+}
+.code-sample .tab.foreground {
+  color: #dc4ab1;
+}
+.code-sample .display-block {
+  display: block;
+}
+.code-sample .display-none {
+  display: none;
+}
+.code-sample .code-explanation p {
+  /*border: 1px solid red;*/
+  font-size: 0.75rem;
+  line-height: 1.4;
+  margin: 0.5rem 0.5rem 0.5rem 0.5rem;
+}
 .related-articles {
   margin: 1.5rem 0;
   padding: 1rem 2.5rem;

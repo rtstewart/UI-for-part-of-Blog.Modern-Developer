@@ -11,7 +11,13 @@
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
   <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,300italic%7CRoboto+Slab:400,300,700,100' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="css/normalize.css">
-  <link rel="stylesheet" type="text/css" href="../Intro-CSS-projects/project-02-buttons-web-components/css-global/colors.css">
+  <!-- http://prismjs.com/index.html -->
+  <link href="css/prism.css" rel="stylesheet" />
+  <!-- https://rawgit.com/ -->
+  <!-- for development -->
+  <link rel="stylesheet" type="text/css" href="https://rawgit.com/rtstewart/web-components/master/global-css/colors.css">
+  <!-- for development -->
+  <link rel="stylesheet" type="text/css" href="https://rawgit.com/rtstewart/web-components/master/buttons/css/buttons.css">
   <link rel="stylesheet" type="text/css" href="css/main.css">
 </head>
 <body>
@@ -41,7 +47,23 @@
             <p>
               There are many use cases for a service like Cloudinary. When I think about my site, I see one obvious need: resized, optimized images on post list pages. <a href="#" target="_blank">Google PageSpeed</a> crucifies my site for image size and I can't blame them: I have a regex routine that searches for the first image in a post and uses that as the post image, but the routine doesn't optimize images, so if the image is very large, I may scale it down with HTML attributes but the download size is still massive.
             </p>
-            <p>something here</p><!-- ?? -->
+
+            <div class="code-sample">
+              <div class="tab foreground">JavaScript</div>
+              <div class="tab">Result</div>
+              <div class="code foreground">
+                      <pre><code class="language-javascript line-numbers">var myArray = [6, 5, 4, 3, 1, 2];
+myArray.sort();
+console.log(myArray); //-&gt; 1, 2, 3, 4, 5, 6</code></pre>
+              </div>
+              <div class="result display-none">
+                      <pre><code>1, 2, 3, 4, 5, 6</code></pre>
+              </div>
+              <div class="code-explanation"><p>Explanation of the code above would go here. Let's see what happens if I keep babbling on here and run into two lines of text.</p>
+              <p>Another paragraph of explanation if needed.</p>
+              </div>
+            </div><!-- end code-sample3 -->
+
             <p>
               If you're looking to serve media via the &lt;picture> element for different media queries, <a href="#" target="_blank">Cloudinary has an excellent structure</a> for doing that as well.
             </p>
@@ -136,5 +158,6 @@
     <br>&nbsp;&nbsp;&nbsp;
     <a href="mailto:blog@moderndeveloper.com" target="_blank">blog@moderndeveloper.com</a></span>
   </footer>
+  <script src="scripts/prism.js"></script>
 </body>
 </html>
