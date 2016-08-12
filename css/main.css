@@ -137,7 +137,9 @@ article {
   border-radius: 2px;
   height: 1.25rem;
   position: relative;
-  top: 0.25rem;
+  top: 0.35rem;
+  /*height: 1.6rem;*/
+  /*vertical-align: middle;*/
 }
 .article-image {
   /*border: 1px solid orange;*/
@@ -389,11 +391,9 @@ button.post, button.subscribe {
   height: 2rem;
 }
 button.post {
+  display: block;
   width: 8rem;
-  margin-top: 1rem;
-  margin-bottom: 2rem;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  margin: 1rem auto 2rem auto;
 }
 .comment-box {
   /*border: 1px solid white;*/
