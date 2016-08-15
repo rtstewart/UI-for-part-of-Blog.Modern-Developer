@@ -330,21 +330,21 @@ ul.keywords li {
   line-height: 1.25rem;
   border-radius: 0.675rem;
   padding: 0 0.5rem;
-  /* the next four selectors and rules corresopond to
-    the icons in a selectable state */
   color: #b6b6b6;
   border: 1px solid #b6b6b6;
+}
+ul.keywords li:not(:last-child) {
   margin-right: 0.1rem;
 }
 ul.keywords li:nth-child(3) {
+  /* the next two rules corresopond to
+    the icons in a selectable state, or whatever is
+    attempting to be represented with the unique
+    pink-colored border and text */
   color: #f263cf;
   border: 1px solid #f263cf;
 }
 ul.social-networks li {
-  /* Twitter blue: #6cadde; */
-  /* Google-Plus background red: #507bbc; */
-  /* Facebook blue: #3b5999; */
-  /* Github: black; */
   box-sizing: content-box;
   /* the following color and border color correspond to
       the disabled state */
@@ -355,25 +355,32 @@ ul.social-networks li {
   line-height: 1.5rem;
   text-align: center;
   border-radius: 1.5rem;
+}
+ul.social-networks li:not(:first-child) {
   margin-left: 0.25rem;
 }
-/* the next four selectors and rules corresopond to
+/* the next four selectors and rules correspond to
     the icons in a selectable state */
-ul.social-networks li:first-child {
+/* Twitter */
+ul.social-networks li.iconTwitter {
   color: #6cadde;
-  border: 2px solid #6cadde;
+  border-color: #6cadde;
 }
-ul.social-networks li:nth-child(2) {
+/* Facebook */
+ul.social-networks li.iconFacebook {
   color: #3b5999;
-  border: 2px solid #3b5999;
+  border-color: #3b5999;
 }
-ul.social-networks li:nth-child(3) {
+/* Github */
+ul.social-networks li.iconGithub {
   color: #000;
-  border: 2px solid #000;
+  border-color: #000;
 }
-ul.social-networks li:last-child {
-  color: #c53929;
-  border: 2px solid #c53929;;
+/* Google-Plus */
+ul.social-networks li.iconGooglePlus {
+  color: #fff;
+  border-color: #db4437;
+  background-color: #db4437;
 }
 .article-comments {
   border: 1px solid #fff; /* ?? */
@@ -601,23 +608,42 @@ footer a {
 }
 
 @media screen and (max-width: 1050px) {
-/*    body {
-        background-color: lightgreen;
-    }*/
-    article, .articles-menu {
-      clear: both;
-      width: 100%;
-    }
-    .articles-menu {
-      margin-top: 1rem;
-      width: 100%;
-    }
-    input[type="email"] {
-      width: 68%;
-    }
-    .subscribe {
-      width: 80%;
-      margin: 0 auto;
-    }
+  article, .articles-menu {
+    clear: both;
+    width: 100%;
+  }
+  .articles-menu {
+    margin-top: 1rem;
+    width: 100%;
+  }
+  input[type="email"] {
+    width: 68%;
+  }
+  .subscribe {
+    width: 80%;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (max-width: 675px) {
+  ul.keywords, ul.social-networks {
+    text-align: center;
+    display: block;
+  }
+  ul.social-networks {
+    top: 0;
+    margin-top: 1.5rem;
+    float: none;
+    /*margin-top: 2rem;*/
+  }
+}
+
+@media screen and (max-width: 590px) {
+  .blog-icon, .search-field-and-button {
+
+  }
+  .search-field-and-button {
+
+  }
 }
 
