@@ -15,12 +15,16 @@ html {
   font-size: 16px;
 }
 body {
+  /*border: 1px solid white;*/
   -webkit-font-smoothing: antialiased;
-  position: relative;
   font-family: "Roboto", sans-serif;
   background-color: #353334;
-  padding: 8rem 9rem 12.5rem 9rem;
-  padding: 8rem 10% 9rem 10%;
+  margin: 0;
+  padding: 0;
+}
+.container {
+  /*border: 1px solid red;*/
+  margin: 8rem 10% 0rem 10%;
 }
 header {
   background-color: #302e2f;
@@ -97,9 +101,6 @@ span.search-field-and-button {
 }
 button:hover {
   cursor: pointer;
-}
-.container {
-  /*border: 1px solid red;*/
 }
 article {
   /*border: 1px solid yellow;*/
@@ -240,9 +241,11 @@ border-top-left-radius: 0;
   height: 2.25rem;
   line-height: 2.25rem;
 }
-.related-articles ul li span {
+
+.related-articles ul li .relatedArticleNumber {
   display: inline-block;
   position: relative;
+  /*position: absolute;*/
   left: -0.625rem;
   font-size: 0.75rem;
   text-align: center;
@@ -255,8 +258,17 @@ border-top-left-radius: 0;
   background-color: white;
   border: 1px solid #b6b6b6;
 }
+.relatedArticleTitle {
+
+}
 /* the next four rules just demonstrate how to target specific
   li to make them unique - do with JS going forward */
+.highlightWithSize {
+
+}
+.highlightWithColor {
+
+}
 .related-articles ul li:nth-child(2) {
   color: #926ae6;
 }
@@ -359,7 +371,7 @@ ul.social-networks li:last-child {
   /*background-color: #00ff00;*/
   color: #838383;
   margin: 0;
-  padding: 0rem 2.5rem 1.5rem 2.5rem;
+  padding: 0rem 2.5rem 0rem 2.5rem;
   /* ?? find out why the LACK of border will
     then ignore top margin on h3 below ?? */
   border: 1px solid #353334;
@@ -466,6 +478,7 @@ button.post {
   position: relative;
   /*background-color: yellow;*/
   width: 27%;
+  margin-bottom: 1.5rem;
   float: right;
 }
 /*.articles {
@@ -556,10 +569,6 @@ button.subscribe {
   float: right;
 }
 footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
   padding: 3.5rem 6.25rem;
   padding: 3.5rem 9%;
   background-color: #242424;
@@ -580,3 +589,25 @@ footer a {
   color: #a6a6a6;
   text-decoration: none;
 }
+
+@media screen and (max-width: 1050px) {
+/*    body {
+        background-color: lightgreen;
+    }*/
+    article, .articles-menu {
+      clear: both;
+      width: 100%;
+    }
+    .articles-menu {
+      margin-top: 1rem;
+      width: 100%;
+    }
+    input[type="email"] {
+      width: 68%;
+    }
+    .subscribe {
+      width: 80%;
+      margin: 0 auto;
+    }
+}
+
