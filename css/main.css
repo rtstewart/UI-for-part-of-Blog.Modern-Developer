@@ -125,7 +125,7 @@ article {
 }
 .article-publish-info {
   /*border: 1px solid red;*/
-  margin: 0.5rem 2.5rem 1.5rem 2.5rem;
+  margin: 1rem 2.5rem 1.5rem 2.5rem;
 }
 .article-publish-info {
   font-size: 0.8rem;
@@ -136,10 +136,7 @@ article {
   border: 1px solid black;
   border-radius: 2px;
   height: 1.25rem;
-  position: relative;
-  top: 0.35rem;
-  /*height: 1.6rem;*/
-  /*vertical-align: middle;*/
+  vertical-align: middle;
 }
 .article-image {
   /*border: 1px solid orange;*/
@@ -430,7 +427,7 @@ button.post {
   /* margin-left = :before "image box" width plus <p> left margin */
   margin-left: 3.5rem;
 }
-.comment li:first-child:before,
+/*.comment li:first-child:before,
 .reply li:first-child:before {
     content: '';
     display: inline-block;
@@ -442,16 +439,22 @@ button.post {
     left: -2.5rem;
     height: 2.5rem;
     width: 2.5rem;
-    /*border-radius: 2px;*/
     background-size: contain;
     background-repeat: no-repeat;
-}
-.comment li:first-child:before {
+}*/
+/*.comment li:first-child:before {
   background-image: url('../images/nobody_f.256x256.jpg');
+}*/
+.comment img, .reply img {
+  position: absolute;
+  top: 0;
+  left: -40px;
+  width: 40px;
+  height: 40px;
 }
-.reply li:first-child:before {
+/*.reply li:first-child:before {
   background-image: url('../images/nobody_m.256x256.jpg');
-}
+}*/
 .comment button, .reply button {
   padding: 0;
   background-color: #353334;
