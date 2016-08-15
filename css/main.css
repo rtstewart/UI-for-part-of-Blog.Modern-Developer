@@ -238,14 +238,16 @@ border-top-left-radius: 0;
 }
 .related-articles ul li {
   border-left: 1px solid #b6b6b6;
-  height: 2.25rem;
+  /*height: 2.25rem;*/
   line-height: 2.25rem;
+  padding: 0 0 0 2rem;
 }
 
-.related-articles ul li .relatedArticleNumber {
+.related-articles ul li span.relatedArticleNumber {
   display: inline-block;
-  position: relative;
-  /*position: absolute;*/
+  /*position: relative;*/
+  position: absolute; /* new */
+  top: 0.4rem; /* new */
   left: -0.625rem;
   font-size: 0.75rem;
   text-align: center;
@@ -258,16 +260,26 @@ border-top-left-radius: 0;
   background-color: white;
   border: 1px solid #b6b6b6;
 }
-.relatedArticleTitle {
-
-}
 /* the next four rules just demonstrate how to target specific
   li to make them unique - do with JS going forward */
-.highlightWithSize {
-
+.highlight {
+  color: #926ae6;
 }
-.highlightWithColor {
-
+.related-articles ul li span.highlightWithSize {
+  /* width and height change by +0.35rem */
+  width: 1.6rem;
+  height: 1.6rem;
+  margin-right: 0.4rem; /* ?? expected 0.75 - 1/2(0.35) */
+  line-height: 1.6rem;
+  border-radius: 0.8rem;
+  left: -0.8rem; /* -0.625 + (-0.175) */
+  top: 0.175rem;
+  color: #926ae6;
+  border: 1px solid #926ae6;
+}
+.related-articles ul li .highlightWithColor {
+  background-color: #926ae6;
+  color: #fff;
 }
 .related-articles ul li:nth-child(2) {
   color: #926ae6;
@@ -280,15 +292,13 @@ border-top-left-radius: 0;
   line-height: 1.6rem;
   border-radius: 0.8rem;
   left: -0.8rem; /* -0.625 + (-0.175) */
-  /* ?? not sure why below adjustment seems necessary
-    to keep span centered vertically in li */
-  top: -0.125rem;
+  top: 0.175rem;
   color: #926ae6;
   border: 1px solid #926ae6;
 }
-.related-articles ul li:nth-child(4) {
+/*.related-articles ul li:nth-child(4) {
   color: #926ae6;
-}
+}*/
 .related-articles ul li:nth-child(4) span {
   background-color: #926ae6;
   color: #fff;
