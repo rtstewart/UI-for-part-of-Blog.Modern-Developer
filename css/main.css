@@ -241,11 +241,15 @@ border-top-left-radius: 0;
 }
 .related-articles ul li {
   border-left: 1px solid #b6b6b6;
-  /*height: 2.25rem;*/
-  line-height: 2.25rem;
-  padding: 0 0 0 2rem;
+  /*height: 2.25rem; don't specify height so wrapping looks proper */
+  /*line-height: 2.25rem;
+  padding: 0 0 0 2rem;*/
+  line-height: 1.5rem;
+  padding:  0.35rem 0 0.75rem 2rem;
 }
-
+.related-articles ul li:last-child {
+  padding:  0.35rem 0 0.5rem 2rem;
+}
 .related-articles ul li span.relatedArticleNumber {
   display: inline-block;
   /*position: relative;*/
@@ -263,9 +267,9 @@ border-top-left-radius: 0;
   background-color: white;
   border: 1px solid #b6b6b6;
 }
-/* the next four rules just demonstrate how to target specific
-  li to make them unique - do with JS going forward */
-.highlight {
+/* the next three rules just demonstrate how to target specific
+  li to make them unique - do with JS going forward with class addition */
+.highlightText {
   color: #926ae6;
 }
 .related-articles ul li span.highlightWithSize {
@@ -276,33 +280,11 @@ border-top-left-radius: 0;
   line-height: 1.6rem;
   border-radius: 0.8rem;
   left: -0.8rem; /* -0.625 + (-0.175) */
-  top: 0.175rem;
+  top: 0.175rem; /* 0.175rem seems the correct calculation but looks a bit small */
   color: #926ae6;
   border: 1px solid #926ae6;
 }
-.related-articles ul li .highlightWithColor {
-  background-color: #926ae6;
-  color: #fff;
-}
-.related-articles ul li:nth-child(2) {
-  color: #926ae6;
-}
-.related-articles ul li:nth-child(2) span {
-  /* width and height change by +0.35rem */
-  width: 1.6rem;
-  height: 1.6rem;
-  margin-right: 0.4rem; /* ?? expected 0.75 - 1/2(0.35) */
-  line-height: 1.6rem;
-  border-radius: 0.8rem;
-  left: -0.8rem; /* -0.625 + (-0.175) */
-  top: 0.175rem;
-  color: #926ae6;
-  border: 1px solid #926ae6;
-}
-/*.related-articles ul li:nth-child(4) {
-  color: #926ae6;
-}*/
-.related-articles ul li:nth-child(4) span {
+.related-articles ul li span.highlightWithColor {
   background-color: #926ae6;
   color: #fff;
 }
@@ -310,7 +292,7 @@ border-top-left-radius: 0;
   /*border: 1px solid red;*/
   width: 100%;
   margin: 0;
-  padding: 1.25rem 2.5rem;
+  padding: 0 2.5rem 1.5rem 2.5rem;
 }
 ul.keywords, ul.social-networks {
   /*border: 1px solid #00ff00;*/
@@ -684,7 +666,7 @@ footer a {
   }
   .article-footer {
     /*border: 1px solid red;*/
-    padding: 1rem 0.125rem;
+    padding: 0 0.125rem 1rem 0.125rem;
   }
   .article-comments {
     padding: 0rem 1rem 0rem 1rem;
