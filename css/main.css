@@ -36,6 +36,10 @@ header {
   left: 0;
   right: 0;
 }
+.blogModernDeveloper {
+  /*border: 1px solid white;*/
+  display: inline-block;
+}
 .blog-icon {
   margin: 0;
   padding: 0;
@@ -79,7 +83,9 @@ header {
   color: #a6a6a6;
   font-weight: 400;
 }
-span.search-field-and-button {
+div.search-field-and-button {
+  /*border: 1px solid white;*/
+  display: inline-block;
   float: right;
 }
 .search-field-and-button input, .search-field-and-button button {
@@ -205,10 +211,6 @@ border-top-left-radius: 0;
   line-height: 1.4;
   margin: 0.5rem 0.5rem 0.5rem 0.5rem;
 }
-.related-articles {
-  margin: 1.5rem 0;
-  padding: 1rem 2.5rem;
-}
 .article-intro p, .article-section p {
   line-height: 1.75rem;
 }
@@ -218,9 +220,10 @@ border-top-left-radius: 0;
 }
 .related-articles {
   /*border: 1px solid orange;*/
+  margin: 1.5rem 0;
+  padding: 1rem 2.5rem;
   background-color: #e9e7e8;
   width: 100%;
-  margin: 0;
 }
 .related-articles h3 {
   font-size: 1.5em;
@@ -586,7 +589,7 @@ button.subscribe {
   float: right;
 }
 footer {
-  padding: 3.5rem 6.25rem;
+  /*padding: 3.5rem 6.25rem;*/
   padding: 3.5rem 9%;
   background-color: #242424;
 }
@@ -597,7 +600,8 @@ footer {
   color: #6f6f6f;
   font-weight: 400;
 }
-footer span.copyright {
+footer div.copyright {
+  /*border: 1px solid white;*/
   float: right;
   font-size: 0.75rem;
   color: #6f6f6f;
@@ -638,12 +642,62 @@ footer a {
   }
 }
 
-@media screen and (max-width: 590px) {
-  .blog-icon, .search-field-and-button {
-
+@media screen and (max-width: 580px) {
+  header, footer {
+    text-align: center;
   }
-  .search-field-and-button {
-
+  .blogModernDeveloper {
+  }
+  div.search-field-and-button {
+    margin-top: 1rem;
+    float: none;
+    display: block;
+  }
+  .subscribe {
+    width: 100%;
+  }
+  footer div.copyright {
+    margin-top: 1rem;
+    float: none;
   }
 }
+
+@media screen and (max-width: 460px) {
+  .container {
+    margin: 8rem 5% 0rem 5%;
+    margin: 8rem 2% 0rem 2%;
+  }
+  .article-title {
+    margin: 0rem 1rem 0.5rem 1rem;
+    font-size: 2rem;
+  }
+  .article-content {
+    /*border: 1px solid orange;*/
+    margin: 0 1rem;
+  }
+  .article-publish-info {
+    /*border: 1px solid red;*/
+    margin: 1rem 1rem 1.5rem 1rem;
+  }
+  .related-articles {
+    padding: 1rem 1rem;
+  }
+  .article-footer {
+    /*border: 1px solid red;*/
+    padding: 1rem 0.125rem;
+  }
+  .article-comments {
+    padding: 0rem 1rem 0rem 1rem;
+    /* ?? find out why the LACK of border will
+      then ignore top margin on h3 below ?? */
+    border: 1px solid #353334;
+  }
+  .comment img, .reply img {
+    /*display: none;*/
+  }
+  footer {
+    padding: 2rem 9%;
+  }
+}
+
 
