@@ -23,10 +23,10 @@
 <body>
   <header>
     <div class="blogModernDeveloper"><span class="blog-icon bg-color-icon-blue blog-icon-bordered"><i class="fa fa-pencil" aria-hidden="true"></i></span><h1 class="md-text md-text-header">Blog<span>.Modern Developer</span></h1></div>
-    <div class="search-field-and-button">
-    <input type="search" name="search-for" placeholder="Search...">
-    <button><i class="fa fa-search" aria-hidden="true"></i></button>
-    </div>
+    <form class="search-field-and-button">
+      <input type="search" name="search-for" placeholder="Search for . . ." required>
+      <button><i class="fa fa-search" aria-hidden="true"></i></button>
+    </form>
   </header>
 
   <div class="container clear-fix">
@@ -117,8 +117,10 @@ console.log(myArray); //-&gt; [ 1, 2, 3, 4, 5, 6 ]</code></pre>
 
       <div class="article-comments">
         <h3>Post Comment</h3>
-        <textarea placeholder="Your Comment" name="comment"></textarea>
-        <br><button class="post">Post</button>
+        <form class="comment-textarea">
+          <textarea placeholder="Your Comment" name="comment" required></textarea>
+          <br><button class="post">Post</button>
+        </form>
         <div class="comment-box">
           <ul class="comment" style="">
             <li><img src="images/nobody_f.256x256.jpg"><span>Ann Duncan</span><span class="posted-ago">2 days ago</span><p>Do you know of other examples of node-based optimizers that work in a fashion similar to cloudinary? I'm very interested in these methods for developing a "Sustainable Web Design" strategy. I was working on a "green boilerplate" with tools like this a few years ago, but now the route to go seems to be bundling cloud services into the design workflow.</p>
@@ -153,10 +155,10 @@ console.log(myArray); //-&gt; [ 1, 2, 3, 4, 5, 6 ]</code></pre>
 
       </div><!-- end .articles -->
 
-      <div class="subscribe clear-fix">
-        <input type="email" name="email" placeholder="Your Email">
+      <form class="subscribe-email clear-fix">
+        <input type="email" name="email" placeholder="Your Email" required>
         <button class="subscribe">Subscribe</button>
-      </div>
+      </form>
 
     </section>
 
@@ -169,7 +171,21 @@ console.log(myArray); //-&gt; [ 1, 2, 3, 4, 5, 6 ]</code></pre>
     <a href="mailto:blog@moderndeveloper.com" target="_blank">blog@moderndeveloper.com</a></div>
   </footer>
 
+  <script type="text/javascript">
+    var app = {};
+  </script>
+
   <script src="scripts/prism.js"></script>
+  <script src="scripts/helpers-appModule.js"></script>
+  <script src="scripts/validator-appModule.js"></script>
+  <script src="scripts/utilities-appModule.js"></script>
+  <script src="scripts/form-utilities-appModule.js"></script>
+  <script src="scripts/blog.js"></script>
+  <script src="scripts/main.js"></script>
+
+  <script type="text/javascript">
+    app.main.init();
+  </script>
 
 </body>
 </html>

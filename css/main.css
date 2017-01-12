@@ -83,7 +83,7 @@ header {
   color: #a6a6a6;
   font-weight: 400;
 }
-div.search-field-and-button {
+.search-field-and-button {
   /*border: 1px solid white;*/
   display: inline-block;
   float: right;
@@ -549,7 +549,7 @@ button.load-more {
   text-transform: uppercase;
   margin-top: 2rem;
 }
-div.subscribe {
+.subscribe-email {
   background-color: #353334;
   padding-top: 1.75rem;
 }
@@ -630,7 +630,7 @@ footer a {
   }
   .blogModernDeveloper {
   }
-  div.search-field-and-button {
+  .search-field-and-button {
     margin-top: 1rem;
     float: none;
     display: block;
