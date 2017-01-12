@@ -63,6 +63,10 @@ app.blog = (function(formUtilities) {
     searchInput = document.querySelector('.search-field-and-button input');
     searchButton = document.querySelector('search-field-and-button button');
 
+    commentForm = document.querySelector('.comment-textarea');
+    commentTextarea = document.querySelector('.comment-textarea textarea');
+    commentButton = document.querySelector('.comment-textarea button');
+
     _addListeners();
   }
 
@@ -82,22 +86,41 @@ app.blog = (function(formUtilities) {
   /* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image */
   function _searchForSubmit(event) {
     /* we will only get in here if all form elements are valid */
+    /* without event.preventDefault() and no action attribute/value pair
+        specified, page would repost to itself, essentially reloading the page;
+    */
     event.preventDefault();
-    var formElements = event.target.elements;
     // console.log(formElements);
-    for (var i=0; i<formElements.length; i++) {
       // console.log('formElements[i].nodeName:', formElements[i].nodeName);
       // console.log('formElements[i].tagName:', formElements[i].tagName);
-      if (formElements[i].nodeName == 'INPUT' && formElements[i].getAttribute('type') != 'image') {
-        // console.log(formElements[i].getAttribute('name'));
-        var infoName = formElements[i].getAttribute('name');
-        submittedData[infoName] = {};
-        submittedData[infoName][infoName] = formElements[i].value;
-        console.log(submittedData);
-      }
-    }
-  }
+    // console.log(formElements[i].getAttribute('name'));
+    var infoName = searchInput.getAttribute('name');
+    submittedData[infoName] = {};
+    submittedData[infoName][infoName] = searchInput.value;
+    console.log(submittedData);
+  } // end _searchForSubmit
 
+  function _commentSubmit(event) {
+    /* without event.preventDefault() and no action attribute/value pair
+        specified, page would repost to itself, essentially reloading the page;
+    */
+    event.preventDefault();
+    var infoName;
+    /* below if is a mock check to see if user is logged in */
+    if (userName) {
+        infoName = commentTextarea.getAttribute('name');
+        submittedData[infoName] = {};
+        submittedData[infoName]['user'] = userName;
+        submittedData[infoName]['comment-date'] = new Date();
+        submittedData[infoName][infoName] = commentTextarea.value;
+        console.log(submittedData);
+    } else {
+      /* indicate to user that they must have an account and
+          be logged in order to comment; */
+    }
+  } // end _commentSubmit
+
+  /* this function is here for general info to console only, and not necessary */
   function _formSubmitActions(event) {
     console.warn('submitting form with class(es) "' + event.target.classList + '", on ' + new Date());
     /* without event.preventDefault() and no action attribute/value pair
@@ -114,6 +137,10 @@ app.blog = (function(formUtilities) {
     searchInput.addEventListener('input', formUtilities.checkForAlphanumericAndLength(2, 25));
     searchForm.addEventListener('submit', _formSubmitActions);
     searchForm.addEventListener('submit', _searchForSubmit);
+
+    commentTextarea.addEventListener('input', formUtilities.checkForAlphanumericAndLength(12, 400));
+    commentForm.addEventListener('submit', _formSubmitActions);
+    commentForm.addEventListener('submit', _commentSubmit);
 
   }
 
