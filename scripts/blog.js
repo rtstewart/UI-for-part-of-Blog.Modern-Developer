@@ -97,7 +97,7 @@ app.blog = (function(formUtilities) {
     var infoName = searchInput.getAttribute('name');
     submittedData[infoName] = {};
     submittedData[infoName][infoName] = searchInput.value;
-    console.log(submittedData);
+    console.info(submittedData);
   } // end _searchForSubmit
 
   function _commentSubmit(event) {
@@ -113,7 +113,7 @@ app.blog = (function(formUtilities) {
         submittedData[infoName]['user'] = userName;
         submittedData[infoName]['comment-date'] = new Date();
         submittedData[infoName][infoName] = commentTextarea.value;
-        console.log(submittedData);
+        console.info(submittedData);
     } else {
       /* indicate to user that they must have an account and
           be logged in order to comment; */
@@ -122,14 +122,14 @@ app.blog = (function(formUtilities) {
 
   /* this function is here for general info to console only, and not necessary */
   function _formSubmitActions(event) {
-    console.warn('submitting form with class(es) "' + event.target.classList + '", on ' + new Date());
+    console.info('Submitting form with class(es) "' + event.target.classList + '", on ' + new Date());
     /* without event.preventDefault() and no action attribute/value pair
         specified, page would repost to itself, essentially reloading the page;
     */
     event.preventDefault();
     /* checks if any form elements are invalid;
         if form was invalid, we wouldn't get here; */
-    console.log(this.checkValidity());
+    console.info(this.checkValidity());
   } // end _formSubmitActions
 
   function _addListeners() {
