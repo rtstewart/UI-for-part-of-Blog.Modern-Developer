@@ -247,6 +247,11 @@ border-top-left-radius: 0;
   line-height: 1.5rem;
   padding:  0.35rem 0 0.75rem 2rem;
 }
+.related-articles a {
+  text-decoration: none;
+  transition: 0.3s ease;
+  color: #000;
+}
 .related-articles ul li:last-child {
   padding:  0.35rem 0 0.5rem 2rem;
 }
@@ -266,13 +271,17 @@ border-top-left-radius: 0;
   color: #b6b6b6;
   background-color: white;
   border: 1px solid #b6b6b6;
+  transition: 0.3s ease;
 }
 /* the next three rules just demonstrate how to target specific
   li to make them unique - do with JS going forward with class addition */
 .highlightText {
   color: #926ae6;
 }
-.related-articles ul li span.highlightWithSize {
+.related-articles ul li a:hover {
+  color: #926ae6;;
+}
+.related-articles ul li a:hover + span {
   /* width and height change by +0.35rem */
   width: 1.6rem;
   height: 1.6rem;
@@ -284,7 +293,7 @@ border-top-left-radius: 0;
   color: #926ae6;
   border: 1px solid #926ae6;
 }
-.related-articles ul li span.highlightWithColor {
+.related-articles ul li a:active + span {
   background-color: #926ae6;
   color: #fff;
 }
