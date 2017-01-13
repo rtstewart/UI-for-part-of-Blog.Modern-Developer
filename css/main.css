@@ -111,7 +111,7 @@ button:hover {
 article {
   /*border: 1px solid yellow;*/
   position: relative;
-  width: 71%;
+  width: 70%;
   float: left;
   /*background-color: white;*/
 }
@@ -500,7 +500,7 @@ button.post {
 .articles-menu {
   position: relative;
   /*background-color: yellow;*/
-  width: 27%;
+  width: 28%;
   margin-bottom: 1.5rem;
   float: right;
 }
@@ -686,7 +686,7 @@ footer a {
   text-decoration: none;
 }
 
-@media screen and (max-width: 1050px) {
+@media screen and (max-width: 1080px) {
   article, .articles-menu {
     clear: both;
     width: 100%;
