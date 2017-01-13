@@ -24,7 +24,7 @@ body {
 }
 .container {
   /*border: 1px solid red;*/
-  margin: 8rem 10% 0rem 10%;
+  margin: 8rem 9% 0rem 9%;
 }
 header {
   background-color: #302e2f;
@@ -686,7 +686,7 @@ footer a {
   text-decoration: none;
 }
 
-@media screen and (max-width: 1080px) {
+@media screen and (max-width: 1090px) {
   article, .articles-menu {
     clear: both;
     width: 100%;
