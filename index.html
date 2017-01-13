@@ -136,12 +136,21 @@ console.log(myArray); //-&gt; [ 1, 2, 3, 4, 5, 6 ]</code></pre>
     </article>
 
     <section class="articles-menu">
+
       <div class="articles">
-        <ul class="article-choices clear-fix">
-          <li>Recent Articles</li>
-          <li>Upcoming Posts</li>
-        </ul>
-        <div class="articles-list">
+
+       <!--  <ul class="article-choices clear-fix">
+          <li><a href="#recent-articles">Recent Articles</a></li>
+          <li><a href="#upcoming-posts">Upcoming Posts</a></li>
+        </ul> -->
+
+          <input id="tab1" class="tabs" type="radio" name="tabs" checked>
+          <label for="tab1">Recent Articles</label>
+
+          <input id="tab2" class="tabs" type="radio" name="tabs">
+          <label for="tab2">Upcoming Articles</label>
+
+        <div id="recent-articles" class="recent-articles tabbed-articles">
           <ul>
             <li><h4>Getting Your Selected Articles Published on Encyclopedia</h4><span>a day ago</span></li>
             <li><h4>Welcome to Encyclopedia Modern Developer</h4><span>2 days ago</span></li>
@@ -151,7 +160,18 @@ console.log(myArray); //-&gt; [ 1, 2, 3, 4, 5, 6 ]</code></pre>
             <li><h4>All Trappings</h4><span>64 days ago</span></li>
           </ul>
           <button class="load-more">Load More</button>
-        </div><!-- end .articles-list -->
+        </div><!-- end .recent-articles -->
+
+        <div id="upcoming-posts" class="upcoming-posts tabbed-articles">
+          <ul>
+            <li><h4>Bov Academy of Programming and Futuristic Engineering</h4><span>next week</span></li>
+            <li><h4>You are only months away from a handsome salary!</h4><span>next week</span></li>
+            <li><h4>Your Employment Preference and Bov Academy Intern Questionnaire</h4><span>next week</span></li>
+            <li><h4>ECMA6 - How is it going?</h4><span>in two weeks</span></li>
+            <li><h4>The long-awaited <em>Secrets to Grit and Success</em> book.</h4><span>in two weeks</span></li>
+          </ul>
+          <button class="load-more">Load More</button>
+        </div><!-- end .upcoming-posts -->
 
       </div><!-- end .articles -->
 
