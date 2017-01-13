@@ -330,18 +330,19 @@ ul.keywords li {
 ul.keywords li:not(:last-child) {
   margin-right: 0.1rem;
 }
-ul.keywords li:nth-child(3) {
-  /* the next two rules corresopond to
-    the icons in a selectable state, or whatever is
-    attempting to be represented with the unique
-    pink-colored border and text */
+ul.keywords li a {
+  display: inline-block;
+  border: none;
+  text-decoration: none;
+  color: #b6b6b6;
+}
+ul.keywords li:hover,
+ul.keywords li:hover a {
   color: #f263cf;
-  border: 1px solid #f263cf;
+  border-color: #f263cf;
 }
 ul.social-networks li {
   box-sizing: content-box;
-  /* the following color and border color correspond to
-      the disabled state */
   color: #b6b6b6;
   border: 2px solid #b6b6b6;
   width: 1.5rem;
@@ -356,6 +357,7 @@ ul.social-networks li:not(:first-child) {
 }
 
 ul.social-networks a {
+  display: inline-block;
   text-decoration: none;
   border: none;
   color: #b6b6b6;
