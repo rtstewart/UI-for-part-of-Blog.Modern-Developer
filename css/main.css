@@ -387,8 +387,11 @@ ul.social-networks li.iconGooglePlus:hover,
 ul.social-networks li.iconGooglePlus:hover a {
   color: #fff;
   border-color: #db4437;
+}
+ul.social-networks li.iconGooglePlus:hover {
   background-color: #db4437;
 }
+
 .article-comments {
   border: 1px solid #fff; /* ?? */
   /*background-color: #353334;*/
