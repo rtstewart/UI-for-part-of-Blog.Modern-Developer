@@ -349,29 +349,40 @@ ul.social-networks li {
   line-height: 1.5rem;
   text-align: center;
   border-radius: 1.5rem;
+  transition: 0.3s ease;
 }
 ul.social-networks li:not(:first-child) {
   margin-left: 0.25rem;
 }
-/* the next four selectors and rules correspond to
-    the icons in a selectable state */
+
+ul.social-networks a {
+  text-decoration: none;
+  border: none;
+  color: #b6b6b6;
+  transition: 0.3s ease;
+}
+
 /* Twitter */
-ul.social-networks li.iconTwitter {
+ul.social-networks li.iconTwitter:hover,
+ul.social-networks li.iconTwitter:hover a {
   color: #6cadde;
   border-color: #6cadde;
 }
 /* Facebook */
-ul.social-networks li.iconFacebook {
+ul.social-networks li.iconFacebook:hover,
+ul.social-networks li.iconFacebook:hover a {
   color: #3b5999;
   border-color: #3b5999;
 }
 /* Github */
-ul.social-networks li.iconGithub {
+ul.social-networks li.iconGithub:hover,
+ ul.social-networks li.iconGithub:hover a {
   color: #000;
   border-color: #000;
 }
 /* Google-Plus */
-ul.social-networks li.iconGooglePlus {
+ul.social-networks li.iconGooglePlus:hover,
+ul.social-networks li.iconGooglePlus:hover a {
   color: #fff;
   border-color: #db4437;
   background-color: #db4437;
