@@ -97,6 +97,7 @@ app.formUtilities = (function(validator, utilities) {
   } // end checkForNumericAndLength
 
   function checkForAlphanumericAndLength(minLen, maxLen) {
+
     return function(event) {
       /* look at only alphanumeric characters in input value */
       var eventTarget = event.target;
@@ -145,6 +146,8 @@ app.formUtilities = (function(validator, utilities) {
       span_prefix = document.querySelector('#' + elem.id + ' + label span.prefix');
       span_suffix = document.querySelector('#' + elem.id + ' + label span.suffix');
     } else {
+      /* don't do anything if the input element does not have the
+          'has-floating-label' class; */
       return;
     }
     /* check to see if the layout appplies, i.e., if there is an adjacentLable */

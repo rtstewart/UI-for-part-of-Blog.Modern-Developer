@@ -48,6 +48,11 @@ app.blog = (function(formUtilities) {
   var subscribeInput;
   var subscribeButton;
 
+  /* The details of what would be stored in each of the following two data
+      objects would ultimately depend on how we wish to use them and when we
+      would like to collect them;
+      For this mock application, we will just collect it all in the appData
+      object as an exercise; */
   var appData;
   var submittedData;
 
@@ -90,7 +95,12 @@ app.blog = (function(formUtilities) {
   function _checkIfUser() {
     if (userName) {
       /* have a value for userName ( ==> user is mock logged in ) */
-      formUtilities.checkForAlphanumericAndLength(12, 400);
+      /* execution of formUtilities.checkForAlphanumericAndLength(12, 400) will
+          return a function with 'event' as its input parameter;
+          returning that will make it available to the element on which
+          _checkIfUser was called; */
+      return formUtilities.checkForAlphanumericAndLength(12, 400);
+      console.log('have a user name');
     } else {
       return function(event) {
         /* indicate to user that they must have an account and
@@ -110,14 +120,13 @@ app.blog = (function(formUtilities) {
     /* additionally, I have checked to make sure user is mock logged in
         before permitting form submission - see _checkIfUser; */
     event.preventDefault();
-    // console.log(formElements);
-      // console.log('formElements[i].nodeName:', formElements[i].nodeName);
-      // console.log('formElements[i].tagName:', formElements[i].tagName);
-    // console.log(formElements[i].getAttribute('name'));
     var infoName = searchInput.getAttribute('name');
     submittedData[infoName] = {};
     submittedData[infoName][infoName] = searchInput.value;
+    /* at this point, we would likely use the JSON format data to send back
+        to the server for further processing/use */
     appData['submitted-data'] = submittedData;
+    /* https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify#Parameters */
     console.info(JSON.stringify(appData, null, 4)); // Indented 4 spaces);
   } // end _searchForSubmit
 
@@ -136,7 +145,8 @@ app.blog = (function(formUtilities) {
     console.info(JSON.stringify(appData, null, 4)); // Indented 4 spaces);
   } // end _commentSubmit
 
-  /* this function is here for general info to console only, and not necessary */
+  /* this function is here for general info to console only, and not necessary
+      for validation or submission of values; */
   function _formSubmitActions(event) {
     console.info('Submitting form with class(es) "' + event.target.classList + '", on ' + new Date());
     /* without event.preventDefault() and no action attribute/value pair
@@ -149,6 +159,9 @@ app.blog = (function(formUtilities) {
   } // end _formSubmitActions
 
   function _addListeners() {
+    /* I create event listeners for 'submit' events assuming we are emulating
+        doing something with the validated information we collect from the
+        various inputs */
 
     searchInput.addEventListener('input', formUtilities.checkForAlphanumericAndLength(2, 25));
     searchForm.addEventListener('submit', _formSubmitActions);
@@ -159,7 +172,7 @@ app.blog = (function(formUtilities) {
     commentForm.addEventListener('submit', _formSubmitActions);
     commentForm.addEventListener('submit', _commentSubmit);
 
-  }
+  } // end _addListeners
 
   return {
     init: init
