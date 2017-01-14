@@ -30,6 +30,8 @@
 
 app.blog = (function(formUtilities) {
 
+  var docTitle;
+
   var userName;
 
   var container;
@@ -51,10 +53,13 @@ app.blog = (function(formUtilities) {
 
   function init() {
 
+    docTitle = document.querySelector('title').textContent;
+
     // just to simulate having someone logged in - typical for commenting;
     userName = 'Kauress';
 
     appData = {};
+    appData['doc-title'] = docTitle;
     submittedData = {};
 
     container = document.querySelector('.container');
@@ -82,6 +87,19 @@ app.blog = (function(formUtilities) {
     var queryString = kvpairs.join("&");
   */
 
+  function _checkIfUser() {
+    if (userName) {
+      /* have a value for userName ( ==> user is mock logged in ) */
+      formUtilities.checkForAlphanumericAndLength(12, 400);
+    } else {
+      return function(event) {
+        /* indicate to user that they must have an account and
+          be logged in order to comment; */
+        commentTextarea.setCustomValidity('Sorry, you must be a registered user and be logged in to comment.');
+      }
+    }
+  } // end _checkIfUser
+
   /* https://developer.mozilla.org/en-US/docs/Web/API/HTMLFormElement/elements */
   /* https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/image */
   function _searchForSubmit(event) {
@@ -89,6 +107,8 @@ app.blog = (function(formUtilities) {
     /* without event.preventDefault() and no action attribute/value pair
         specified, page would repost to itself, essentially reloading the page;
     */
+    /* additionally, I have checked to make sure user is mock logged in
+        before permitting form submission - see _checkIfUser; */
     event.preventDefault();
     // console.log(formElements);
       // console.log('formElements[i].nodeName:', formElements[i].nodeName);
@@ -97,7 +117,8 @@ app.blog = (function(formUtilities) {
     var infoName = searchInput.getAttribute('name');
     submittedData[infoName] = {};
     submittedData[infoName][infoName] = searchInput.value;
-    console.info(submittedData);
+    appData['submitted-data'] = submittedData;
+    console.info(JSON.stringify(appData, null, 4)); // Indented 4 spaces);
   } // end _searchForSubmit
 
   function _commentSubmit(event) {
@@ -106,18 +127,13 @@ app.blog = (function(formUtilities) {
     */
     event.preventDefault();
     var infoName;
-    /* below if is a mock check to see if user is logged in */
-    if (userName) {
-        infoName = commentTextarea.getAttribute('name');
-        submittedData[infoName] = {};
-        submittedData[infoName]['user'] = userName;
-        submittedData[infoName]['comment-date'] = new Date();
-        submittedData[infoName][infoName] = commentTextarea.value;
-        console.info(submittedData);
-    } else {
-      /* indicate to user that they must have an account and
-          be logged in order to comment; */
-    }
+    infoName = commentTextarea.getAttribute('name');
+    submittedData[infoName + '-data'] = {};
+    submittedData[infoName + '-data']['user'] = userName;
+    submittedData[infoName + '-data']['comment-date-time'] = new Date().toString();
+    submittedData[infoName + '-data'][infoName] = commentTextarea.value;
+    appData['submitted-data'] = submittedData;
+    console.info(JSON.stringify(appData, null, 4)); // Indented 4 spaces);
   } // end _commentSubmit
 
   /* this function is here for general info to console only, and not necessary */
@@ -138,7 +154,8 @@ app.blog = (function(formUtilities) {
     searchForm.addEventListener('submit', _formSubmitActions);
     searchForm.addEventListener('submit', _searchForSubmit);
 
-    commentTextarea.addEventListener('input', formUtilities.checkForAlphanumericAndLength(12, 400));
+    // commentTextarea.addEventListener('input', formUtilities.checkForAlphanumericAndLength(12, 400));
+    commentTextarea.addEventListener('input', _checkIfUser());
     commentForm.addEventListener('submit', _formSubmitActions);
     commentForm.addEventListener('submit', _commentSubmit);
 
