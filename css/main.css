@@ -499,20 +499,18 @@ button.post {
 /* rhs of desktop page */
 .articles-menu {
   position: relative;
-  /*background-color: yellow;*/
   width: 28%;
   margin-bottom: 1.5rem;
   float: right;
 }
-/* ?? without the rule below, there is a small gap under the "Upcoming Articles"
-    tab and the div under it when that tab is selected and has the darker
-    background color; ?? */
+
+/* using font-size: 0 because of display: inline-block; on radio labels as tabs */
 .articles {
-  background-color: #272526;
-  border-radius: 2px;
+  font-size: 0;
+  border-radius: 3px;
 }
 
-/* only need the following 6 rules if using an unordered list with anchors
+/* only need the following 8 rule sets if using an unordered list with anchors
     for the "tabbed" "Recent Articles", and "Upcoming Posts" tabs; */
 .articles-menu ul {
   /*border: 1px solid white;*/
@@ -520,11 +518,10 @@ button.post {
   margin: 0;
   padding: 0;
 }
-/* tabs for "Recent Articles" and "Upcoming Posts" */
+
+/* tabs for "Recent Articles" and "Upcoming Posts" using unordered list */
 .articles-menu ul.article-choices li {
-  /*border: 1px solid yellow;*/
   text-align: center;
-  padding: 0.75rem 0;
   font-size: 0.9rem;
   color: #4a96de;
   width: 50%;
@@ -532,39 +529,53 @@ button.post {
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
 }
+
 .articles-menu ul.article-choices li:hover {
   cursor: pointer;
 }
+
 /* default/initial active tab */
 .articles-menu ul.article-choices li:first-child {
   background-color: #272526;
 }
+
 /* default/initial inactive tab */
 .articles-menu ul.article-choices li:last-child {
   background-color: #353334;
 }
-ul.article-choices li a {
+
+.articles-menu ul.article-choices li a {
+  display: inline-block;
+  padding: 0.75rem 0;
+  width: 100%;
   text-decoration: none;
   color: #4a96de;
 }
-/*div.tabbed-articles:target {
-  transform: scale(1);
+
+/* need a means of having selected tab change background color */
+.articles-menu ul.article-choices li a:active {
+  background-color: #272526;
 }
-div.tabbed-articles:not(:target) {
-  height: 0;
-  transform: scale(0);
+
+/* ?? NOTE: if NOT using the ul for article tabs, then the following must
+    be commented out, or it interferes animation of the tab contents; */
+
+/*#recent-articles:target,
+#upcoming-posts:target {
+  height: auto;
+  opacity: 1;
+  transform: scaleY(1);
 }*/
 
+/* rule sets above are for using ul as tabs */
+
 /* radios */
-.articles {
-  font-size: 0;
-}
+
 .articles input[type=radio] {
   display: none;
 }
 .articles input[type=radio] + label {
   display: inline-block;
-  /*float: left;*/
   cursor: pointer;
   text-align: center;
   padding: 0.75rem 0;
@@ -572,74 +583,86 @@ div.tabbed-articles:not(:target) {
   color: #4a96de;
   background-color: #353334;
   width: 50%;
-  /*float: left;*/
-  border-top-left-radius: 2px;
-  border-top-right-radius: 2px;
-  transition: 0.3s ease;
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+  transition: 0.4s ease;
 }
 
-#tab1:checked + label {
+.articles input[type=radio]:checked + label {
   background-color: #272526;
 }
-#tab2:checked + label {
-  background-color: #272526;
-}
-
 /* radios */
 
-.recent-articles,
-.upcoming-posts {
+/* .tabbed-articles-container merely provides a constant background fill color
+    for the container while swapping the inner tabbed divs height, scale,
+    and opacity during transition; */
+.tabbed-articles-container {
+  background-color: #272526;
+  transition: 0.5s;
+}
+
+.tabbed-articles {
   background-color: #272526;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   padding: 0 1rem;
-  /* ?? find out why omitting the line below creates
-    a gap between .articles-list and .article-choices */
-  border: 1px solid #272526;
-  transition: transform 0.3s ease;
+  /* below rules are for animation purposes */
+  opacity: 0;
+  height: 0;
+  transform: scaleY(0);
+  /******************************************/
+  transition: 0.4s;
 }
-.recent-articles ul li:not(:last-child),
-.upcoming-posts ul li:not(:last-child) {
+
+/* radios */
+
+#tab1:checked ~ .tabbed-articles-container #recent-articles {
+  opacity: 1;
+  height: auto;
+  transform: scaleY(1);
+  /*animation: tabChecked 10s;*/
+}
+
+#tab2:checked ~ .tabbed-articles-container #upcoming-posts {
+  opacity: 1;
+  height: auto;
+  transform: scaleY(1);
+  /*animation: tabChecked 10s;*/
+}
+
+/* radios */
+
+.tabbed-articles ul li {
   border-bottom: 1px solid #6f6f6f;
   padding-bottom: 1rem;
+  padding-top: 1rem;
 }
-.recent-articles h4,
-.upcoming-posts h4 {
+
+.tabbed-articles h4 {
   font-size: 0.9rem;
   color: #4f6985;
   margin-bottom: 0.25rem;
+  margin-top: 0rem;
 }
-.recent-articles span,
-.upcoming-posts span {
+
+.tabbed-articles span {
   font-size: 0.8rem;
   color: #6f6f6f;
 }
-#recent-articles,
-#upcoming-posts {
-  /*display: none;*/
-  height: 0;
-  transform: scaleY(0);
+
+@keyframes tabChecked {
+  10% {height: auto; transform: scaleY(1);}
+  100% {opacity: 1; height: auto; transform: scaleY(1);}
 }
-#tab1:checked ~ #recent-articles {
-  /*display: block;*/
-  height: auto;
-  transform: scaleY(1);
-}
-#tab2:checked ~ #upcoming-posts {
-  /*display: block;*/
-  height: auto;
-  transform: scaleY(1);
-}
+
 button.load-more {
   width: 100%;
   border: none;
-  border-top: 1px solid #6f6f6f;
   background-color: #272526;
   color: #4a96de;
   font-size: 0.8rem;
   height: 2.5rem;
   text-transform: uppercase;
-  margin-top: 2rem;
 }
 .subscribe-email {
   background-color: #353334;
@@ -676,7 +699,6 @@ footer {
   font-weight: 400;
 }
 footer div.copyright {
-  /*border: 1px solid white;*/
   float: right;
   font-size: 0.75rem;
   color: #6f6f6f;
@@ -713,7 +735,6 @@ footer a {
     top: 0;
     margin-top: 1.5rem;
     float: none;
-    /*margin-top: 2rem;*/
   }
 }
 
@@ -747,18 +768,15 @@ footer a {
     font-size: 2rem;
   }
   .article-content {
-    /*border: 1px solid orange;*/
     margin: 0 1rem;
   }
   .article-publish-info {
-    /*border: 1px solid red;*/
     margin: 1rem 1rem 1.5rem 1rem;
   }
   .related-articles {
     padding: 1rem 1rem;
   }
   .article-footer {
-    /*border: 1px solid red;*/
     padding: 0 0.125rem 1rem 0.125rem;
   }
   .article-comments {
