@@ -120,7 +120,7 @@ app.formUtilities = (function(validator, utilities) {
   /* this method is for fields that are NOT required, but get validated, and
       we want to set the background color according to the validity; */
   function setBackgroundValidity(elem) {
-    if (!elem.hasAttribute('required')) {
+    if (!elem.hasAttribute('required') && elem.classList.contains('validate')) {
       // if (elem.checkValidity()) {
       if (elem.checkValidity() && elem.value != '') {
         // elem.classList.add('valid');
@@ -141,7 +141,7 @@ app.formUtilities = (function(validator, utilities) {
     var adjacentLabel;
     var span_prefix;
     var span_suffix;
-    if (elem.classList.contains('has-floating-label')) {
+    if (elem.classList.contains('has-floating-label') && elem.id != '') {
       adjacentLabel = document.querySelector('#' + elem.id + ' + label');
       span_prefix = document.querySelector('#' + elem.id + ' + label span.prefix');
       span_suffix = document.querySelector('#' + elem.id + ' + label span.suffix');
@@ -150,7 +150,7 @@ app.formUtilities = (function(validator, utilities) {
           'has-floating-label' class; */
       return;
     }
-    /* check to see if the layout appplies, i.e., if there is an adjacentLable */
+    /* check to see if the layout appplies, i.e., if there is an adjacentLabel */
     if (adjacentLabel) {
       // don't seem to need the additional condition in below, but keep in mind;
       // if (elem.value.length > 0 || elem.hasAttribute('placeholder') || elem.checkValidity()) {

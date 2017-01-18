@@ -99,7 +99,7 @@ app.blog = (function(formUtilities) {
           return a function with 'event' as its input parameter;
           returning that will make it available to the element on which
           _checkIfUser was called; */
-      return formUtilities.checkForAlphanumericAndLength(12, 400);
+      return formUtilities.checkForAlphanumericAndLength(12, 200);
       console.log('have a user name');
     } else {
       return function(event) {

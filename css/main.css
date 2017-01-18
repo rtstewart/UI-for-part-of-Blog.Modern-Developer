@@ -513,10 +513,10 @@ button.post {
 /* only need the following 8 rule sets if using an unordered list with anchors
     for the "tabbed" "Recent Articles", and "Upcoming Posts" tabs; */
 .articles-menu ul {
-  /*border: 1px solid white;*/
   list-style-type: none;
   margin: 0;
   padding: 0;
+  /*max-height: inherit;*/
 }
 
 /* tabs for "Recent Articles" and "Upcoming Posts" using unordered list */
@@ -598,20 +598,27 @@ button.post {
     and opacity during transition; */
 .tabbed-articles-container {
   background-color: #272526;
-  transition: 0.5s;
+  /*transition: 0.5s;*/
 }
 
 .tabbed-articles {
+  /*#recent-articles, #upcoming-posts {*/
+  /*position: absolute;*/
   background-color: #272526;
   border-bottom-left-radius: 2px;
   border-bottom-right-radius: 2px;
   padding: 0 1rem;
+  overflow-y: hidden;
   /* below rules are for animation purposes */
   opacity: 0;
   height: 0;
   transform: scaleY(0);
+  transition: 0.5s;
   /******************************************/
-  transition: 0.4s;
+  /*max-height: 0;
+  position: absolute;*/
+  /*transition: 0.8s;*/
+  /*transition: max-height 0.4s 0.4s, transform 0.5s;*/
 }
 
 /* radios */
@@ -620,6 +627,11 @@ button.post {
   opacity: 1;
   height: auto;
   transform: scaleY(1);
+  transition: 0.5s;
+  /*max-height: 1200px;
+  position: static;
+  transition: 1.8s;*/
+  /*transition: max-height 0.4s 0.4s, transform 0.5s;*/
   /*animation: tabChecked 10s;*/
 }
 
@@ -627,6 +639,11 @@ button.post {
   opacity: 1;
   height: auto;
   transform: scaleY(1);
+  transition: 0.5s;
+  /*max-height: 1200px;
+  position: static;
+  transition: 1.8s;*/
+  /*transition: max-height 0.4s 0.4s, transform 0.5s;*/
   /*animation: tabChecked 10s;*/
 }
 
