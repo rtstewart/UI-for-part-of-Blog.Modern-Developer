@@ -92,14 +92,77 @@ app.validator = (function(helpers) {
 
   function isEmailAddress(input) {
     /* Checks if the input parameter is an email address, consisting of three
-      parts: An email address consists of two strings combined by an @ symbol. */
-
-    /* Regarding top-level-domain:
-        https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains
-        https://www.icann.org/resources/pages/tlds-2012-02-25-en */
+      parts: An email address consists of two strings combined by an @ symbol.
+    */
 
     /*
-      intrinsic constraints for <input type="email":
+      https://en.wikipedia.org/wiki/Email_address
+
+      from above:
+      The format of email addresses is local-part@domain where the local part
+      may be up to 64 characters long and the domain may have a maximum of 255
+      characters[2]—but the maximum of 256-character length of a forward or
+      reverse path restricts the entire email address to be no more than 254
+      characters long.
+
+      username@mailserver.top-level-domain
+
+      Regarding top-level-domain:
+        https://en.wikipedia.org/wiki/List_of_Internet_top-level_domains
+        list of top-level-domains: https://www.icann.org/resources/pages/tlds-2012-02-25-en
+        valid top-level-domains: http://data.iana.org/TLD/tlds-alpha-by-domain.txt
+    */
+
+    /*
+
+    var usernameAllowableNoRestrictions = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&\'*+-/=?^_`{|}~';
+
+    - within username, dot . is allowed, provided that it is not the first or
+    last character unless quoted, and provided also that it does not appear
+    consecutively unless quoted (e.g. John..Doe@example.com is not allowed
+    but "John..Doe"@example.com is allowed);
+
+    - in addition to the specific case/restrictions for dot . as noted above, the
+    following characters are allowed within username, with restrictions:
+
+    var usernameAllowableWithRestrictions = '."(),:;<>@[\\ ]';
+
+    (they are only allowed inside a quoted string, as described in the
+    paragraph below, and in addition, a backslash or double-quote must be
+    preceded by a backslash);
+
+    - A quoted string may exist as a dot separated entity within the local-part,
+    or it may exist when the outermost quotes are the outermost characters of
+    the local-part (e.g., abc."defghi".xyz@example.com
+    or "abcdefghixyz"@example.com are allowed.
+    Conversely, abc"defghi"xyz@example.com is not;
+    neither is abc\"def\"ghi@example.com).
+    Quoted strings and characters however, are not commonly used.
+    RFC 5321 also warns that "a host that expects to receive mail SHOULD avoid
+    defining mailboxes where the Local-part requires (or uses) the Quoted-string form".
+
+    - Despite the wide range of special characters which are technically valid,
+    organisations, mail services, mail servers and mail clients in practice
+    often do not accept all of them. For example, Windows Live Hotmail only
+    allows creation of email addresses using alphanumerics, dot (.),
+    underscore (_) and hyphen (-). Common advice is to avoid using some
+    special characters to avoid the risk of rejected emails.
+
+    - The domain name part of an email address has to conform to strict
+    guidelines: it must match the requirements for a hostname, a list of
+    dot-separated DNS labels, each label being limited to a length of
+    63 characters and consisting of:
+
+        * uppercase and lowercase Latin letters A to Z and a to z;
+        * digits 0 to 9, provided that top-level domain names are not all-numeric;
+        * hyphen -, provided that it is not the first or last character.
+
+    var domainAllowable = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.';
+
+    */
+
+    /*
+      intrinsic constraints for <input type="email">:
 
       https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5/Constraint_validation
       The value must follow the ABNF production:
@@ -115,13 +178,41 @@ app.validator = (function(helpers) {
         RFC 5322: http://tools.ietf.org/html/rfc5322
         RFC 1034: http://www.apps.ietf.org/rfc/rfc1034.html#sec-3.5
     */
+    /*
+      https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Data_form_validation
+      indicates the following regex:
+      var emailRegExp = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
+    */
+    /*
+      The pattern below specified for email will enforce the following format:
+        - characters@characters.domain (characters followed by an
+          @ sign, followed by more characters, and then a "."
+        - After the "." sign, you can only write 2 to 3 letters
+          from a to z:
+      pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+    */
     var argsObj = {'input':input};
+
+    var usernameAllowableNoRestrictions = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!#$%&\'*+-/=?^_`{|}~';
+    var usernameAllowableWithRestrictions = '."(),:;<>@[\\ ]';
+
+    /* if using usernameMozillaAllowableNoRestrictions, '.' cannot be first
+        or last character, and cannot have two or more in a row internally; */
+    var usernameMozillaAllowableWithRestrictions = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789.!#$%&\'*+/=?^_`{|}~-';
+
+    /* below, '-' cannot be the first or last character in domain */
+    var domainAllowable = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-.';
+    var topLevelDomainAllowable = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+    var tldMin = 2;
+    var tldMax = 3;
+
+    var parts = [];
+    var errMsg = '';
     // check that parameters are supplied
     if(!helpers.areParametersDefined.call(isEmailAddress, argsObj) ) {
       return false;
     }
-    var parts = [];
-    var errMsg = '';
+
     if (input.lastIndexOf('@') == -1) {
       errMsg = 'input must have "@" separating the username from the domain + top-level domain portion of the email address';
       helpers.errHandler.call(isEmailAddress, errMsg);
@@ -142,6 +233,86 @@ app.validator = (function(helpers) {
     }
     // the stage is set for further testing on each element of parts
     // console.log(parts);
+    /* have to make some decisions about how stringent we want to try to be with
+        enforcing email format;
+        I have decided first, not to allow spaces, and therefore, I will use
+        usernameMozillaAllowableWithRestrictions variable to enforce username;
+    */
+
+    if (hasWhitespace(input)) {
+      errMsg = 'The email cannot have any spaces';
+      helpers.errHandler.call(isEmailAddress, errMsg);
+      return {trueFalse: false, result: errMsg};
+    }
+
+    /* username */
+    if (!isStringAllowable(parts[0], usernameMozillaAllowableWithRestrictions)) {
+      errMsg = 'The email username can only contain the following characters:\n'
+                + usernameMozillaAllowableWithRestrictions;
+      helpers.errHandler.call(isEmailAddress, errMsg);
+      return {trueFalse: false, result: errMsg};
+    }
+    if (parts[0].includes('.')) {
+      if (parts[0].indexOf('.') == 0 || parts[0].lastIndexOf('.') == parts[0].length - 1) {
+        errMsg = 'The period, ".", in the username (the part preceding "@") cannot be the first or last character.';
+        helpers.errHandler.call(isEmailAddress, errMsg);
+        return {trueFalse: false, result: errMsg};
+      }
+    }
+    if (parts[0].includes('..')) {
+      errMsg = 'The username (the part preceding "@") cannot contain consecutive periods ".."';
+      helpers.errHandler.call(isEmailAddress, errMsg);
+      return {trueFalse: false, result: errMsg};
+    }
+
+    /* domain */
+    if (!isStringAllowable(parts[1], domainAllowable)) {
+      errMsg = 'The email domain (the part between "@" and the last ".") can only contain the following characters:\n'
+                + domainAllowable;
+      helpers.errHandler.call(isEmailAddress, errMsg);
+      return {trueFalse: false, result: errMsg};
+    }
+    if (parts[1].includes('-')) {
+      if (parts[1].indexOf('-') == 0 || parts[1].lastIndexOf('-') == parts[1].length - 1) {
+        errMsg = 'The hyphen, "-", in the domain name (the part between "@" and the last ".") cannot be the first or last character.';
+        helpers.errHandler.call(isEmailAddress, errMsg);
+        return {trueFalse: false, result: errMsg};
+      }
+    }
+    if (parts[1].includes('.')) {
+      if (parts[1].indexOf('.') == 0 || parts[1].lastIndexOf('.') == parts[1].length - 1) {
+        errMsg = 'The period, ".", in the domain name (the part between "@" and the last ".") cannot be the first or last character.';
+        helpers.errHandler.call(isEmailAddress, errMsg);
+        return {trueFalse: false, result: errMsg};
+      }
+    }
+    if (parts[1].includes('-.') || parts[1].includes('.-')) {
+      /* '-.' or '.-' will not be at the start or end of parts[1] due to the
+          two previous tests */
+        errMsg = 'The domain name (the part between "@" and the last ".") cannot contain "-.", or, ".-"';
+        helpers.errHandler.call(isEmailAddress, errMsg);
+        return {trueFalse: false, result: errMsg};
+    }
+    if (parts[1].includes('..')) {
+      errMsg = 'The domain name (the part between "@" and the last ".") cannot contain consecutive periods ".."';
+      helpers.errHandler.call(isEmailAddress, errMsg);
+      return {trueFalse: false, result: errMsg};
+    }
+
+    /* top-level domain */
+    if (!isStringAllowable(parts[2], topLevelDomainAllowable)) {
+      errMsg = 'The email top-level domain (the part following the last ".") can only contain the following characters:\n'
+                + topLevelDomainAllowable;
+      helpers.errHandler.call(isEmailAddress, errMsg);
+      return {trueFalse: false, result: errMsg};
+    }
+    if (parts[2].length < tldMin || parts[2].length > tldMax) {
+      errMsg = 'The email top-level domain (the part following the last ".") must be ' + tldMin + ' - ' + tldMax + ' characters.';
+      helpers.errHandler.call(isEmailAddress, errMsg);
+      return {trueFalse: false, result: errMsg};
+    }
+
+    /* email address is valid */
     return {trueFalse: true, result: 'valid email address'};
   } // end isEmailAddress
 
@@ -1478,7 +1649,10 @@ function isValidMmDdYyyyBetween(input, minDate, maxDate) {
     return true;
   } // end hasNoWhitespace
 
+  /* NOTE: certain html <input> types remove leading and trailing blanks,
+      such as type="email"; */
   function hasWhitespace(input) {
+    console.log('from function hasWhitespace, input:', input);
     /* checks to see if input has no whitespace */
     var whitespace = ' \t\n';
     var argsObj = {'input':input};
