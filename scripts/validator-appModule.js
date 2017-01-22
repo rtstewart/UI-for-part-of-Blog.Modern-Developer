@@ -1652,7 +1652,7 @@ function isValidMmDdYyyyBetween(input, minDate, maxDate) {
   /* NOTE: certain html <input> types remove leading and trailing blanks,
       such as type="email"; */
   function hasWhitespace(input) {
-    console.log('from function hasWhitespace, input:', input);
+    // console.log('from function hasWhitespace, input:', input);
     /* checks to see if input has no whitespace */
     var whitespace = ' \t\n';
     var argsObj = {'input':input};

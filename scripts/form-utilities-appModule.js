@@ -147,7 +147,6 @@ app.formUtilities = (function(validator, utilities) {
       adjacentLabel = document.querySelector('#' + elem.id + ' + label');
       span_prefix = document.querySelector('#' + elem.id + ' + label span.prefix');
       span_suffix = document.querySelector('#' + elem.id + ' + label span.suffix');
-      console.info('attempting input label placement with function placeInputLabelFor');
     } else {
       /* don't do anything if the input element does not have the
           'has-floating-label' class; */
@@ -159,6 +158,7 @@ app.formUtilities = (function(validator, utilities) {
       // don't seem to need the additional condition in below, but keep in mind;
       // if (elem.value.length > 0 || elem.hasAttribute('placeholder') || elem.checkValidity()) {
       if (elem.value.length > 0 || elem.hasAttribute('placeholder') ) {
+        console.info('attempting input label placement with function placeInputLabelFor');
         /* if there is something in the field (including a placeholder value),
             we don't want the label inside; */
         adjacentLabel.classList.add('label-above-input');
