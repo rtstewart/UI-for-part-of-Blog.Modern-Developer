@@ -28,7 +28,7 @@
     , otherwise, it will retain the setCustomValidity value previously set;
 */
 
-app.blog = (function(formUtilities) {
+app.blog = (function(formUtilities, validator) {
 
   var docTitle;
 
@@ -154,6 +154,58 @@ app.blog = (function(formUtilities) {
     console.info(JSON.stringify(appData, null, 4)); // Indented 4 spaces);
   } // end _commentSubmit
 
+  function _emailValidate(event) {
+    var eventTarget = event.target; // same as element subscribeInput
+    var emailId = eventTarget.value;
+    // console.log('emailId:', emailId);
+    var emailUserName;
+    var emailDomain;
+    var emailTopLevelDomain;
+    if (validator.hasWhitespace(emailId)) {
+        eventTarget.setCustomValidity('The email address cannot contain any spaces.');
+        return;
+    } else {
+      eventTarget.setCustomValidity('');
+    }
+    /* username */
+    if (emailId.includes('@')) {
+      emailUserName = emailId.slice(0, emailId.lastIndexOf('@'));
+      // console.log('emailUserName:', emailUserName);
+      if (emailUserName.length >= 2) {
+        eventTarget.setCustomValidity('');
+      } else {
+        eventTarget.setCustomValidity('The email address username (the part before the "@" symbol) must be at least 2 characters.');
+        return;
+      }
+    } else {
+      eventTarget.setCustomValidity('There must be an a "@" symbol between the username, and the domain name.');
+      return;
+    }
+
+    /* domain name */
+    if ( emailId.includes(".") && emailId.lastIndexOf('@') < emailId.lastIndexOf('.')) {
+      emailDomain = emailId.slice(emailId.lastIndexOf('@') + 1, emailId.lastIndexOf("."));
+      // console.log('emailDomain:', emailDomain);
+      if (emailDomain.length < 3) {
+        eventTarget.setCustomValidity('The email address domain name (the part between the "@" symbol and the last period ".") must be at least 3 characters.');
+        return;
+      }
+    } else {
+      eventTarget.setCustomValidity('There must be a period, ".", between the domain name and the top-level domain name.\nExpecting format: username@domain.top-level-domain');
+      return;
+    }
+
+    /* top-level domain */
+    emailTopLevelDomain = emailId.slice(emailId.lastIndexOf('.') + 1);
+    // console.log('emailTopLevelDomain:', emailTopLevelDomain);
+    if (emailTopLevelDomain.length < 2 || emailTopLevelDomain.length > 3) {
+      eventTarget.setCustomValidity('The top-level domain (the part after the last period ".", must be 2-3 characters.');
+    }
+
+    /* email is valid at this point according to this method; */
+
+  } // end _emailValidate
+
   function _emailSubscribeSubmit(event) {
     /* without event.preventDefault() and no action attribute/value pair
         specified, page would repost to itself, essentially reloading the page;
@@ -201,7 +253,10 @@ app.blog = (function(formUtilities) {
     commentForm.addEventListener('submit', _formSubmitActions);
     commentForm.addEventListener('submit', _commentSubmit);
 
-    subscribeInput.addEventListener('input', formUtilities.emailInputValidate);
+    /* NOTE: formUtilities.emailInputValidate provides a more robust email
+        validation */
+    // subscribeInput.addEventListener('input', formUtilities.emailInputValidate);
+    subscribeInput.addEventListener('input', _emailValidate);
     subscribeForm.addEventListener('submit', _formSubmitActions);
     subscribeForm.addEventListener('submit', _emailSubscribeSubmit);
 
@@ -211,4 +266,4 @@ app.blog = (function(formUtilities) {
     init: init
   };
 
-})(app.formUtilities);
+})(app.formUtilities, app.validator);
