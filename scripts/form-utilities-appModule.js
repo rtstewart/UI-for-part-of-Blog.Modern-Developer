@@ -131,6 +131,8 @@ app.formUtilities = (function(validator, utilities) {
         console.log('setting bg color to white on element:\n', elem);
         elem.style.backgroundColor = '#fff';
       }
+    } else {
+      console.info('NOT attempting to set bg color from function setBackgroundValidity');
     }
   } // end setBackgroundValidity
 
@@ -145,9 +147,11 @@ app.formUtilities = (function(validator, utilities) {
       adjacentLabel = document.querySelector('#' + elem.id + ' + label');
       span_prefix = document.querySelector('#' + elem.id + ' + label span.prefix');
       span_suffix = document.querySelector('#' + elem.id + ' + label span.suffix');
+      console.info('attempting input label placement with function placeInputLabelFor');
     } else {
       /* don't do anything if the input element does not have the
           'has-floating-label' class; */
+      console.info('NOT attempting input label placement with function placeInputLabelFor');
       return;
     }
     /* check to see if the layout appplies, i.e., if there is an adjacentLabel */

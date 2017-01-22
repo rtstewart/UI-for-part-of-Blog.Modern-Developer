@@ -77,6 +77,10 @@ app.blog = (function(formUtilities) {
     commentTextarea = document.querySelector('.comment-textarea textarea');
     commentButton = document.querySelector('.comment-textarea button');
 
+    subscribeForm = document.querySelector('.subscribe-email');
+    subscribeInput = document.querySelector('.subscribe-email input');
+    subscribeButton = document.querySelector('.subscribe-email button');
+
     _addListeners();
   }
 
@@ -136,7 +140,12 @@ app.blog = (function(formUtilities) {
     */
     event.preventDefault();
     var infoName;
+    /* infoName is the value of the "name" attribute of the form input field
+        now being submitted; */
     infoName = commentTextarea.getAttribute('name');
+    /* below defines a new property, [infoName + '-data'], for the appData
+        object, with an object as its value, which will contain this form's
+        validated and submitted input, and date/time of submission */
     submittedData[infoName + '-data'] = {};
     submittedData[infoName + '-data']['user'] = userName;
     submittedData[infoName + '-data']['comment-date-time'] = new Date().toString();
@@ -144,6 +153,26 @@ app.blog = (function(formUtilities) {
     appData['submitted-data'] = submittedData;
     console.info(JSON.stringify(appData, null, 4)); // Indented 4 spaces);
   } // end _commentSubmit
+
+  function _emailSubscribeSubmit(event) {
+    /* without event.preventDefault() and no action attribute/value pair
+        specified, page would repost to itself, essentially reloading the page;
+    */
+    event.preventDefault();
+    var infoName;
+    /* infoName is the value of the "name" attribute of the form input field
+        now being submitted; */
+    infoName = subscribeInput.getAttribute('name');
+    /* below defines a new property, [infoName + '-data'], for the appData
+        object, with an object as its value, which will contain this form's
+        validated and submitted input, and date/time of submission */
+    submittedData[infoName + '-data'] = {};
+    submittedData[infoName + '-data']['subscribe-date-time'] = new Date().toString();
+    submittedData[infoName + '-data'][infoName] = subscribeInput.value;
+    appData['submitted-data'] = submittedData;
+    console.info(JSON.stringify(appData, null, 4)); // Indented 4 spaces);
+
+  } // end _emailSubscribeSubmit
 
   /* this function is here for general info to console only, and not necessary
       for validation or submission of values; */
@@ -171,6 +200,10 @@ app.blog = (function(formUtilities) {
     commentTextarea.addEventListener('input', _checkIfUser());
     commentForm.addEventListener('submit', _formSubmitActions);
     commentForm.addEventListener('submit', _commentSubmit);
+
+    subscribeInput.addEventListener('input', formUtilities.emailInputValidate);
+    subscribeForm.addEventListener('submit', _formSubmitActions);
+    subscribeForm.addEventListener('submit', _emailSubscribeSubmit);
 
   } // end _addListeners
 

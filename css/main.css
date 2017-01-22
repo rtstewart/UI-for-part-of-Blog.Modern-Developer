@@ -681,6 +681,7 @@ button.load-more {
   height: 2.5rem;
   text-transform: uppercase;
 }
+/* below is the subscribe <form> */
 .subscribe-email {
   background-color: #353334;
   padding-top: 1.75rem;
@@ -696,6 +697,9 @@ input[type="email"] {
   padding: 0 0.75rem;
   font-size: 0.8rem;
   width: 66%;
+}
+input[type="email"]:valid {
+  background-color: #6a6869;
 }
 button.subscribe {
   width: 5rem;
